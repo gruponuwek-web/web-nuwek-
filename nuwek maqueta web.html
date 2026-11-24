@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuwek.mx — Home (maqueta)</title>
+<style>
+body{margin:0;background:#fff}
+a{color:#111}a:hover{color:#555}
+input,select{font:inherit;padding:12px 14px;border:1px solid #999;border-radius:8px;background:#fff;color:#111;min-height:44px;box-sizing:border-box;width:100%}
+label{font-size:13px;font-weight:600;color:#111;display:flex;flex-direction:column;gap:6px}
+
+html{scroll-behavior:smooth} section,.world{scroll-margin-top:90px}
+[hidden]{display:none !important}
+.whead{background:#fff;padding-bottom:4px}
+.hint{position:absolute;top:12px;left:12px;right:12px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;padding:12px 16px;border:1px dashed #999;border-radius:12px;background:#fff;color:#111;z-index:1}
+.prow .drawbox{position:relative}
+.scrolly{height:240vh;position:relative;margin-bottom:32px}
+.stick{position:sticky;top:100px;display:flex;flex-direction:column;gap:14px;padding-top:4px;background:#fff}
+.prow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pbox{border:1px solid #bbb;border-radius:16px;padding:24px;background:#fff}
+.plist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.plist li{display:flex;gap:14px;align-items:baseline;font-size:18px;line-height:1.35}
+.pn{font-size:13px;font-weight:700;letter-spacing:1px;color:#555}
+.prow .drawbox{aspect-ratio:auto;min-height:240px;border:1px solid #bbb}
+.srow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.sc{display:flex;flex-direction:column;border:1px solid #ddd;border-radius:16px;padding:18px;color:#aaa;background:#fff;transition:all .4s}
+.sc.on{color:#111;border-color:#111;background:#ebebeb}
+.sc.cur{background:#111;color:#fff;border-color:#111}
+@media (max-width:800px){.wt{font-size:22px !important}.wl{font-size:14px !important;line-height:1.45 !important}.wk{display:none}.scrolly{height:240vh}.stick{gap:10px;padding-top:4px}.prow{grid-template-columns:1fr;gap:10px}.pbox{padding:14px}.pbox p{font-size:16px !important;margin-bottom:8px !important}.plist{gap:6px}.plist li{font-size:14px}.prow .drawbox{min-height:130px;font-size:11px;padding:52px 12px 10px}.srow{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.sc{padding:12px}.sc p:nth-child(2){font-size:16px !important;margin:0 !important;overflow-wrap:anywhere}.hint{font-size:13px;padding:8px 12px}}
+.story{margin-bottom:56px}
+.scrollhint{display:flex;align-items:center;gap:12px;font-weight:700;font-size:15px;padding:14px 18px;border:1px dashed #999;border-radius:12px;margin-bottom:24px;width:fit-content}
+.bob{display:inline-block;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.storyrow{display:flex;gap:40px;align-items:flex-start}
+.panel{flex:1 1 44%;position:sticky;top:100px}
+.panelin{background:#fff;border:1px solid #bbb;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.bar{height:6px;background:#e4e4e4;border-radius:9px;overflow:hidden}.barfill{height:6px;background:#111;width:25%;transition:width .4s}
+.drawbox{aspect-ratio:4/3;background:#e4e4e4;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#555;font-size:14px}
+.draw{animation:fadein .5s}
+@keyframes fadein{from{opacity:0;transform:scale(.97)}}
+.outs{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.outs li{color:#bbb;padding-left:24px;position:relative;transition:color .3s}
+.outs li::before{content:"○";position:absolute;left:0}
+.outs li.got{color:#111}.outs li.got::before{content:"✓"}
+.steps{flex:1 1 56%;display:flex;flex-direction:column}
+.st{min-height:60vh;display:flex;flex-direction:column;justify-content:center;padding:24px 28px;border-left:3px solid #ddd;color:#aaa;transition:color .3s,border-color .3s}
+.st.on{color:#111;border-left-color:#111}
+.st .stout{opacity:.4}.st.on .stout{opacity:1}
+.ctaband{display:flex;flex-wrap:wrap;gap:32px;align-items:center;background:#ebebeb;border-radius:24px;padding:40px}
+@media (max-width:600px){header nav{gap:4px 12px !important;padding:10px 16px !important}header nav>div{order:3;width:100%;justify-content:center}header nav>a:first-child{width:110px !important;height:38px !important}}
+@media (max-width:800px){.storyrow{flex-direction:column;gap:0}.panel{width:100%;top:80px;z-index:3;background:#fff;padding-bottom:8px}.panelin{padding:14px;gap:8px}.drawbox{aspect-ratio:16/7;font-size:12px}.outs,.outsT{display:none}.st{min-height:45vh}}
+.tagtrack{display:contents}.tagtrack .dup{display:none}
+@keyframes tagScroll{to{transform:translateX(calc(-50% - 3px))}}
+@media (max-width:800px){.tagrow{flex-wrap:nowrap !important;overflow:hidden}.tagtrack{display:flex;gap:6px;width:max-content;animation:tagScroll 14s linear infinite}.tagtrack .dup{display:inline-block}.tagtrack span{white-space:nowrap}}
+@media (max-width:800px){
+.prow .drawbox{order:-1}
+.pbox,.sc.cur{min-height:220px;box-sizing:border-box}
+.scrolly:not([data-a]) .srow,.scrolly[data-a="0"] .srow{display:none}
+.scrolly[data-a]:not([data-a="0"]) .pbox{display:none}
+.srow{grid-template-columns:1fr !important}
+.sc:not(.cur){display:none}
+.sc.cur{animation:fadein .4s}
+.sc.cur p:nth-child(2){font-size:20px !important;margin:0 0 8px !important}
+.sc.cur p:nth-child(3){display:block;font-size:15px}
+}
+.book2{position:relative;width:100%;max-width:1100px;height:min(640px,76vh);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));perspective:4000px}
+.bkpage{background:#fff;border:1px solid #bbb;padding:28px;box-sizing:border-box;overflow:auto;display:flex;flex-direction:column;gap:14px;color:#111}
+#bookL{border-radius:16px 3px 3px 16px;box-shadow:inset -16px 0 22px -18px rgba(0,0,0,.3)}
+#bookR{border-radius:3px 16px 16px 3px;box-shadow:inset 16px 0 22px -18px rgba(0,0,0,.3)}
+.bkpage{transition:background .4s}.bkpage>*{transition:opacity .4s}
+.bkpage.dim{background:#e2e2e2}.bkpage.dim>*{opacity:.3;pointer-events:none}
+.book2.single{grid-template-columns:1fr}.book2.single #bookR{display:none}.book2.single #bookL{border-radius:6px 16px 16px 6px;box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.25)}
+.bkend{margin:auto;color:#999;font-size:13px}
+.leaf2{position:absolute;top:0;bottom:0;width:50%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .7s cubic-bezier(.45,.05,.35,1);z-index:3;pointer-events:none}
+.leaf2.fw{left:50%;transform-origin:left center}.leaf2.fw.go{transform:rotateY(-180deg)}
+.leaf2.bw{left:0;transform-origin:right center}.leaf2.bw.go{transform:rotateY(180deg)}
+.leaf2 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.leaf2 .face.back{transform:rotateY(180deg)}
+.book2>.oldL,.book2>.oldR,.fold .bkpage{position:absolute;inset:0}
+.ph{background:#e4e4e4;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;color:#666;font-size:13px;padding:12px}
+.avph{width:52px;height:52px;border-radius:50%;background:#ddd;flex:0 0 52px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#666}
+.bub{margin:0;background:#eee;border-radius:14px;padding:10px 14px;align-self:flex-start;max-width:85%;line-height:1.45}
+.bub.me{background:#111;color:#fff;align-self:flex-end}
+.tipm{margin:0;border:1px dashed #111;border-radius:12px;padding:10px 14px;font-size:14px}
+.evm{margin:0;align-self:flex-end;font-size:12px;color:#555}
+.meta{margin:0;font-size:13px;color:#555;background:#f4f4f4;border-radius:10px;padding:10px 14px;line-height:1.5}
+.score{width:100px;height:100px;border-radius:50%;border:6px solid #111;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;flex:0 0 auto}
+.rec{font-size:14px;background:#f4f4f4;border-radius:8px;padding:8px 10px}
+.lnk{border:0;background:none;font:inherit;text-decoration:underline;cursor:pointer;padding:10px 0;color:#111}
+.agbtn:disabled{opacity:.4;cursor:default}
+.chip{font:inherit;font-size:14px;border:1px solid #999;border-radius:99px;padding:8px 14px;background:#fff;cursor:pointer;min-height:40px;color:#111}
+.chip.on{background:#111;color:#fff;border-color:#111}
+.lvbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.lvseg{font:inherit;font-size:13px;border:1px solid #999;background:#fff;color:#555;padding:8px 0;cursor:pointer;min-height:40px}
+.lvseg:first-child{border-radius:99px 0 0 99px}.lvseg:last-child{border-radius:0 99px 99px 0}
+.lvseg.on{background:#111;color:#fff;border-color:#111}
+.formula{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;counter-reset:f}
+.formula li{counter-increment:f;display:flex;flex-direction:column;gap:2px;padding:10px 12px 10px 44px;border:1px solid #ddd;border-radius:12px;position:relative}
+.formula li::before{content:counter(f);position:absolute;left:12px;top:10px;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}
+.formula em{font-size:13px;color:#555}
+.mktgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.mkt{font:inherit;font-weight:700;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid #bbb;border-radius:14px;background:#fff;cursor:pointer;color:#111;text-align:left}
+.mkt.on{border:3px solid #111}
+.topbox{flex:1 1 0;min-height:0;overflow:hidden;border-top:1px solid #ddd;padding-top:10px}
+.toplist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.toplist li{display:flex;gap:10px;align-items:center;padding:6px 8px;border-radius:8px;background:#f4f4f4}
+.tn{width:22px;height:22px;border-radius:50%;border:1px solid #111;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.ptsbox{display:flex;justify-content:space-between;align-items:center;gap:12px;border:2px solid #111;border-radius:14px;padding:14px 18px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stagebar{display:flex;gap:4px;flex-wrap:wrap}.stagebar span{flex:1 1 0;min-width:70px;text-align:center;font-size:11px;padding:6px 2px;border-radius:99px;border:1px solid #ccc;color:#999}
+.stagebar span.done{background:#ddd;color:#111;border-color:#ddd}.stagebar span.cur{background:#111;color:#fff;border-color:#111}
+.simchat{flex:1 1 auto;min-height:160px;overflow:auto;display:flex;flex-direction:column;gap:8px;border:1px solid #eee;border-radius:12px;padding:12px}
+.simin{display:flex;flex-direction:column;gap:8px}.simin textarea{font:inherit;border:1px solid #999;border-radius:10px;padding:10px;resize:none}
+.tipbtn{font:inherit;font-size:13px;border:1px dashed #111;border-radius:99px;background:#fff;padding:8px 14px;cursor:pointer;min-height:44px;color:#111}
+@media (max-width:799px){.book2{grid-template-columns:1fr;height:min(700px,80vh)}#bookR{display:none}#bookL{border-radius:16px}.bkpage{padding:20px}}
+
+.expage{background:#fff;border:1px solid #bbb;border-radius:6px 16px 16px 6px;box-shadow:inset 18px 0 24px -18px rgba(0,0,0,.25);min-height:min(560px,72vh);max-height:78vh;overflow:auto;padding:32px;box-sizing:border-box;transform-origin:left center;display:flex;flex-direction:column;gap:14px}
+.exbook{position:relative}
+.oldL,.oldR,.ffront,.fback,.ffrontR,.fbackR{transform-origin:50% 50% !important;animation:none !important;box-shadow:none}
+.oldR{clip-path:inset(0 0 0 50%);z-index:2;pointer-events:none}
+.fold.rev.go{transform:rotateY(180deg)}
+.ffrontR{clip-path:inset(0 50% 0 0);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fbackR{clip-path:inset(0 0 0 50%);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg)}
+.oldL{clip-path:inset(0 50% 0 0);z-index:2;pointer-events:none}
+.fold{position:absolute;inset:0;z-index:3;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transform-origin:50% 50%;transition:transform .65s cubic-bezier(.45,.05,.35,1);pointer-events:none}
+.fold.go{transform:rotateY(-180deg)}
+.ffront{clip-path:inset(0 0 0 50%);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fback{clip-path:inset(0 50% 0 0);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg)}
+.exshare{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.exsoc{width:48px;height:48px;border-radius:50%;border:1px solid #111;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#111;cursor:pointer;padding:0}
+.exsoc:hover{background:#111;color:#fff}
+.exprint{display:none}
+@media print{main,header{display:none !important}#examModal>div{position:static !important;background:none !important;padding:0 !important;display:block !important}#examModal>div>*:not(.book2){display:none !important}.book2{display:block !important;height:auto !important;max-width:none !important}#bookR{display:none !important}body *{visibility:hidden !important}#bookL,#bookL *{visibility:visible !important}#bookL{position:static;max-height:none !important;min-height:0 !important;overflow:visible !important;border:0;box-shadow:none;width:100%}.exnoprint{display:none !important}.exprint{display:block}}
+@keyframes exOut{to{transform:rotateY(-90deg);opacity:.6}}@keyframes exIn{from{transform:rotateY(90deg);opacity:.6}}
+.exopt{font:inherit;text-align:left;background:#fff;border:1px solid #999;border-radius:12px;padding:14px 16px;cursor:pointer;min-height:48px;color:#111}
+.exopt:hover{border-color:#111}.exopt.sel{background:#111;color:#fff;border-color:#111}
+.exav{font:inherit;text-align:left;background:#f4f4f4;border:1px solid #bbb;border-radius:14px;padding:18px;cursor:pointer;display:flex;gap:14px;align-items:center;color:#111;min-height:48px}
+.exav:hover{border-color:#111}
+.exnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:16px}
+.exres{border:1px solid #ddd;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.exres.ok{border-color:#111}
+#floatCta{position:fixed;left:50%;bottom:20px;z-index:6;font:inherit;font-weight:700;font-size:17px;background:#111;color:#fff;border:2px solid #111;border-radius:999px;padding:16px 30px;min-height:54px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transform:translate(-50%,160%);opacity:0;transition:transform .55s cubic-bezier(.2,.9,.3,1.2),opacity .3s;white-space:nowrap}
+#floatCta.show{transform:translate(-50%,0);opacity:1}
+#floatCta.dock{transform:translate(-50%,0) scale(.9);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s}
+.vgrid{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:32px}
+.vplayer{aspect-ratio:16/9;background:#ddd;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#555}
+.vbox{border:1px solid #ddd;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.vh{margin:0 0 6px;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#555}
+.vcap{font:inherit;text-align:left;display:flex;gap:12px;align-items:baseline;background:none;border:0;border-radius:10px;padding:10px;cursor:pointer;color:#111;min-height:44px}
+.vcap:hover,.vcap.on{background:#f0f0f0}.vcap.on{font-weight:700}
+.vt{font-size:13px;font-variant-numeric:tabular-nums;color:#555;min-width:40px}
+.vres{font:inherit;text-align:left;display:flex;gap:12px;align-items:center;background:#f7f7f7;border:1px solid #e4e4e4;border-radius:12px;padding:10px;cursor:pointer;color:#111}
+.vres:hover{border-color:#111}
+.dictabs{display:flex;border:1px solid #111;border-radius:999px;overflow:hidden}
+.dictabs button{font:inherit;border:0;background:#fff;padding:10px 20px;cursor:pointer;min-height:44px;color:#111}.dictabs button.on{background:#111;color:#fff}
+.dgrid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;align-items:start}
+.dside{position:sticky;top:100px;display:flex;flex-direction:column;gap:12px}
+.az{display:flex;flex-wrap:wrap;gap:2px;font-size:12px}.az span{width:20px;text-align:center;color:#ccc}.az span.has{color:#111;font-weight:700}
+.dlist{display:flex;flex-direction:column;border-top:1px solid #ddd}
+.dterm{font:inherit;text-align:left;background:none;border:0;border-bottom:1px solid #eee;padding:12px 6px;cursor:pointer;color:#111;min-height:44px}
+.dterm.on{font-weight:700;background:#f0f0f0}.dterm.soon{color:#aaa;cursor:default;display:flex;align-items:center;gap:4px;min-height:0}.dterm em{font-size:11px;font-style:normal;border:1px solid #ccc;border-radius:99px;padding:1px 6px;margin-left:4px}
+.dentry{display:flex;flex-direction:column;gap:28px;border-left:1px solid #ddd;padding-left:32px}
+.done1{margin:0;font-size:24px;line-height:1.4;font-weight:700;border-left:4px solid #111;padding-left:16px}
+.dformula{margin:0;font-family:ui-monospace,Menlo,monospace;background:#f4f4f4;border-radius:12px;padding:16px;line-height:1.5}
+.dtest{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;background:#ebebeb;border-radius:18px;padding:24px}
+@media (max-width:800px){.vgrid,.dgrid{grid-template-columns:1fr}.dside{position:static}.dlist{flex-direction:row;overflow-x:auto;border-top:0;gap:6px}.dterm{white-space:nowrap;border:1px solid #ddd;border-radius:99px;padding:8px 14px}.dterm.soon{display:none}.dentry{border-left:0;padding-left:0}}
+.dtop{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;border-top:1px solid #ddd;border-bottom:1px solid #ddd;padding:14px 0}
+.az{display:flex;flex-wrap:wrap;gap:2px}.az button{font:inherit;font-size:14px;font-weight:700;width:34px;height:34px;border:1px solid transparent;border-radius:8px;background:none;cursor:pointer;color:#111}
+.az button:hover{border-color:#111}.az button.on{background:#111;color:#fff}.az button:disabled{color:#ccc;font-weight:400;cursor:default;border-color:transparent}
+.dlist{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;margin-top:14px;border-top:0}
+.dterm{font:inherit;font-size:14px;background:#fff;border:1px solid #bbb;border-radius:99px;padding:8px 14px;cursor:pointer;color:#111;min-height:40px}
+.dterm.on{background:#111;color:#fff;border-color:#111}.dterm.soon{color:#aaa;cursor:default;display:inline-flex;align-items:center;gap:4px;border-color:#e4e4e4}.dterm em{font-size:11px;font-style:normal;border:1px solid #ccc;border-radius:99px;padding:1px 6px}
+.dentry{display:flex;flex-direction:column;gap:28px;min-width:0;border-left:0;padding-left:0}
+@media (max-width:800px){.dlist{flex-wrap:nowrap;overflow-x:auto}.dterm{white-space:nowrap}.az button{width:30px;height:30px;font-size:13px}}
+.intlogin{max-width:300px;margin:8px auto 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.uline{width:100%;border:0 !important;border-bottom:1px solid #bbb !important;border-radius:0 !important;padding:10px 2px !important;background:transparent !important;text-align:left}
+.uline:focus{outline:none;border-bottom-color:#111 !important}
+.sr{position:absolute;left:-9999px}
+.intlogin label{width:100%}
+.rcard.newcard{border:2px dashed #999;background:#fafafa;align-items:center;justify-content:center;gap:10px;padding:32px 36px;text-align:center;min-height:250px;box-sizing:border-box}
+.rcard.newcard:hover{border-color:#111;background:#fff}
+.rcard.newcard span:last-child{max-width:220px;line-height:1.45}
+.stbadge.st-pub{border-style:solid;background:#111;color:#fff;border-color:#111}.stbadge.st-bor{border-style:dashed}
+.stbadge{position:absolute;top:10px;right:10px;background:#fff;border:1px dashed #999;border-radius:99px;padding:3px 10px;font-size:11px;color:#111}.stbadge.rev{border-style:solid;border-color:#111}
+.ntgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.ntile{font:inherit;text-align:left;color:#111;background:#fff;border:1px solid #bbb;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;cursor:pointer;min-height:170px}
+.ntile:hover{border-color:#111}.ntile.code{border-style:dashed}
+.ntic{width:48px;height:48px;border-radius:12px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.intbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;background:#f0f0f0;border-radius:14px;padding:12px 18px;margin-bottom:20px;font-size:14px}
+input,select,textarea{font-weight:400;font-size:15px}
+select{appearance:none;-webkit-appearance:none;padding-right:44px !important;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center !important;cursor:pointer}
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:2px}
+.segb{font:inherit;font-size:14px;font-weight:400;border:1px solid #999;border-radius:12px;background:#fff;color:#111;padding:12px 6px;min-height:48px;cursor:pointer}
+.segb:hover{border-color:#111}.segb.on{background:#111;color:#fff;border-color:#111;font-weight:600}
+@media (max-width:480px){.seg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ty-img{flex:1 1 auto;min-height:62vh;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:14px;text-align:center;padding:24px}
+.stickyside{display:flex;flex-direction:column;gap:16px;min-width:0;position:sticky;top:96px;align-self:start;max-height:calc(100vh - 112px);overflow:auto;padding-bottom:4px}
+.vgrid:has(.stickyside)>:first-child{min-height:calc(100vh - 100px)}
+.stickyside{gap:12px !important}
+.stickyside .vbox{padding:14px;gap:6px}
+.stickyside .vres{padding:8px}.stickyside .vres .ph{width:36px !important;height:36px !important;flex-basis:36px !important}
+.stickyside .exsoc{width:40px;height:40px}
+.dfind .az button{height:28px !important;font-size:13px}
+.dfind .az{display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:1px}.dfind .az button{font-size:12px !important;padding:0}.dfind .az button{width:auto;height:32px}
+.dfind .dlist{margin-top:6px;gap:6px;max-height:84px;overflow:auto}.dfind .dterm{font-size:13px;padding:6px 12px;min-height:34px}
+@media (max-width:800px){.vgrid:has(.stickyside)>:first-child{min-height:0}.stickyside{position:static;max-height:none;overflow:visible}.dfind .dlist{flex-wrap:wrap}}
+.marquee{overflow:hidden;width:100%;padding:4px 0}
+.track{display:flex;gap:16px;width:max-content;animation:recScroll 45s linear infinite}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+.track .rcard{flex:0 0 230px;width:230px}
+@keyframes recScroll{to{transform:translateX(calc(-50% - 8px))}}
+.rside{font:inherit;text-align:left;background:none;border:0;border-bottom:1px solid #ccc;padding:14px 4px;cursor:pointer;display:flex;justify-content:space-between;color:#111;min-height:44px}
+.rside:hover{background:#fff}
+.rside.on{font-weight:700}
+.rtab{font:inherit;background:none;border:0;padding:10px 4px;cursor:pointer;color:#555;min-height:44px}
+.rtab.on{color:#111;font-weight:700;text-decoration:underline;text-underline-offset:6px}
+.rsep{color:#bbb;padding:0 8px}
+.rcard{font:inherit;text-align:left;color:#111;background:#fff;border:1px solid #bbb;border-radius:16px;overflow:hidden;padding:0;cursor:pointer;display:flex;flex-direction:column}
+.rcard:hover{border-color:#111}
+.rimg{background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:12px;border-bottom:1px solid #ccc;position:relative}
+.book{position:relative;width:min(900px,100%);aspect-ratio:2/1.3;perspective:2000px}
+.leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .8s ease}
+.leaf.turned{transform:rotateY(-180deg)}
+.pg{position:absolute;inset:0;backface-visibility:hidden;background:#fff;border:1px solid #bbb;padding:28px;box-sizing:border-box;display:flex;flex-direction:column;overflow:auto;font-size:15px}
+.pg.back{transform:rotateY(180deg)}
+.pk{margin:0 0 8px;font-size:12px;letter-spacing:2px;color:#555}
+.more{font:inherit;background:none;border:1px solid #111;border-radius:99px;padding:8px 14px;cursor:pointer;align-self:flex-start;min-height:40px}
+.chat{display:flex;flex-direction:column;gap:8px}
+.chat p{margin:0;padding:10px 14px;border-radius:14px;max-width:85%;line-height:1.4}
+.bA{background:#eee;align-self:flex-start}.bB{background:#fff;border:1px solid #bbb;align-self:flex-end}
+.copt{font:inherit;color:#111;text-decoration:none;background:#f4f4f4;border:1px solid #bbb;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px;cursor:pointer;box-sizing:border-box;min-height:44px}
+.copt:hover,.copt:focus{border-color:#111;color:#111}
+.agnav{width:44px;height:44px;border:1px solid #bbb;border-radius:50%;background:#fff;font-size:22px;cursor:pointer}
+.agnav:disabled{opacity:.35;cursor:default}
+.agbtn{font:inherit;font-weight:700;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:14px 26px;min-height:48px;cursor:pointer;display:inline-block;box-sizing:border-box}
+.agday{display:flex;flex-direction:column;gap:8px}
+.agslot{font:inherit;font-size:14px;padding:10px 0;border:1px solid #111;border-radius:8px;background:#fff;cursor:pointer;min-height:44px}
+.agslot:disabled{border-color:#ddd;color:#aaa;text-decoration:line-through;cursor:default}
+.agslot.on{background:#111;color:#fff}
+.megawrap{display:inline-block}
+.mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid #bbb;box-shadow:0 12px 24px rgba(0,0,0,.08)}
+.megaitem{font:inherit;text-align:left;background:#f4f4f4;border:1px solid #ccc;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:8px;cursor:pointer;color:#111;min-height:44px}
+.megaitem:hover,.megaitem:focus{border-color:#111}
+.solcard{font:inherit;color:#111;background:#fff;border:1px solid #bbb;border-radius:20px;overflow:hidden;padding:0;cursor:pointer;display:flex;flex-direction:column}
+.solcard:hover{border-color:#111}
+.solcard.on{border:3px solid #111}
+.solcard.on .solcta{text-decoration:none}
+
+</style>
+</head>
+<body>
+<div style="font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff">
+
+<div style="background:#111;color:#fff;font-size:13px;padding:10px 24px;text-align:center">MAQUETA DE ESTRUCTURA Y COPY · Sin dirección visual: colores, tipografía e imágenes los define Diseño</div>
+<!-- NAV -->
+<header id="siteHeader" onmouseleave="megaOpen(false)" style="background:#fff;border-bottom:1px solid #bbb;position:sticky;top:0;z-index:5">
+<nav style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+<a href="#" onclick="goHome();return false;" onmouseenter="megaOpen(false)" style="display:flex;align-items:center;justify-content:center;width:140px;height:44px;border:1px dashed #999;text-decoration:none;color:#666;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px">[ LOGO ]</a>
+<div style="display:flex;gap:4px;align-items:center;font-family:Arial,Helvetica,sans-serif;font-size:15px">
+<div class="megawrap" onmouseenter="megaOpen(true)">
+<a href="#" onclick="goSol();return false;" aria-haspopup="true" style="color:#111;text-decoration:none;padding:12px 14px;display:inline-block">Soluciones ▾</a>
+<div id="mega" class="mega" hidden>
+<div style="max-width:1200px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:24px">
+<div style="flex:1 1 220px"><p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#555">SOLUCIONES</p><p style="margin:0 0 16px;font-size:22px;font-weight:700;line-height:1.25">Tres frentes. Un mismo método.</p><a href="#" onclick="goSol();return false;" style="font-size:14px">Ver todas las soluciones →</a></div>
+<div style="flex:3 1 600px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px"><button type="button" class="megaitem" onclick="goSol('consultoria')"><strong style="font-size:18px">Consultoría</strong><span style="color:#555;font-size:14px;line-height:1.45">Instalamos el sistema comercial de tu empresa.</span><span style="font-size:13px;text-decoration:underline">Ver solución →</span></button><button type="button" class="megaitem" onclick="goSol('capacitacion')"><strong style="font-size:18px">Capacitación</strong><span style="color:#555;font-size:14px;line-height:1.45">Entrenamos a tu equipo para ejecutar el método.</span><span style="font-size:13px;text-decoration:underline">Ver solución →</span></button><button type="button" class="megaitem" onclick="goSol('marketing')"><strong style="font-size:18px">Marketing Digital</strong><span style="color:#555;font-size:14px;line-height:1.45">Prospectos que tu equipo sí puede cerrar.</span><span style="font-size:13px;text-decoration:underline">Ver solución →</span></button></div>
+</div></div></div>
+<span style="color:#999" aria-hidden="true">|</span>
+<a href="#" onclick="goRec();return false;" onmouseenter="megaOpen(false)" style="color:#111;text-decoration:none;padding:12px 14px">Recursos</a>
+</div>
+<button type="button" onclick="openContact()" style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:15px;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:12px 22px;min-height:44px;cursor:pointer">Contacto</button>
+</nav>
+</header>
+<main id="pageHome">
+
+<!-- 1. HOOK -->
+<section id="inicio" style="background:#f4f4f4;color:#111;border-top:1px solid #ccc">
+<div style="max-width:1200px;margin:0 auto;padding:88px 24px 104px;display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+<div style="flex:1 1 520px;min-width:0">
+<p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">PARA DUEÑOS Y DIRECTORES COMERCIALES</p>
+<h1 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:60px;line-height:1.05">Tienes un equipo de ventas. <strong style="font-weight:700;color:#111">Pero te la pasas pastoreándolo.</strong></h1>
+<p style="margin:24px 0 0;font-size:19px;line-height:1.6;color:#555;max-width:580px">Preguntar si ya llamaron. Recordarles el seguimiento. Rescatar la venta que se les cayó. Eso no es dirigir: es pastorear. Y no se arregla pastoreando más fuerte ni pidiéndoles que le echen más ganas. <strong style="color:#111">Se arregla con método.</strong></p>
+<a href="#dolores" style="display:inline-block;margin-top:32px;color:#111;font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:16px">¿Cuántas de estas te pasaron esta semana? ↓</a>
+</div>
+<div style="flex:1 1 360px;min-height:380px;border:2px dashed #999;border-radius:24px;display:flex;align-items:center;justify-content:center;text-align:center;color:#555;padding:24px;box-sizing:border-box">Personaje animado ligado al scroll<br>(Alaide · Memo · Eva)</div>
+</div>
+</section>
+
+<!-- 2. DOLORES -->
+<section id="dolores" style="max-width:1200px;margin:0 auto;padding:96px 24px">
+<p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">LA VIDA DEL PASTOR DE VENDEDORES</p>
+<h2 style="margin:0 0 48px;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:44px;line-height:1.15;max-width:880px">Si te reconoces en dos o más, <strong style="font-weight:700">no estás dirigiendo. Estás pastoreando.</strong></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px">
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px"><p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">VENDES POR RACHAS</p><p style="margin:0;font-size:16px;line-height:1.55">Lunes, 9 a.m. Abres el pipeline y no hay pipeline: hay una lista de clientes que "quedaron de llamar".</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px"><p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">METAS SIN MAPA</p><p style="margin:0;font-size:16px;line-height:1.55">Pusiste la meta del año en enero. En junio nadie recuerda cuál era, y menos cómo se iba a lograr.</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px"><p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">TALENTO QUE SE VA</p><p style="margin:0;font-size:16px;line-height:1.55">Tu mejor vendedor renunció y se llevó la cartera. Los demás venden "a su estilo", que es otra forma de decir sin método.</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px"><p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">GERENTES APAGAFUEGOS</p><p style="margin:0;font-size:16px;line-height:1.55">Tu gerente es en realidad el vendedor más caro de la empresa: cierra él, resuelve él, y nadie dirige.</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px"><p style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">DUEÑO ATRAPADO</p><p style="margin:0;font-size:16px;line-height:1.55">¿Hace cuánto no piensas dónde estará tu empresa en tres años? Hoy estás pensando en la cotización de las 4.</p></div>
+</div>
+</section>
+
+<!-- 3. SOLUCIONES FALLIDAS -->
+<section style="background:#ebebeb;color:#111">
+<div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+<p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">Y SÍ, YA LO INTENTASTE</p>
+<h2 style="margin:0 0 48px;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:44px;line-height:1.15;max-width:880px">Todas fueron formas de pastorear más fuerte. <strong style="font-weight:700">Ninguna fue un método.</strong></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px">
+<div style="border:1px solid #aaa;border-radius:20px;padding:28px"><h3 style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;text-decoration:line-through;text-decoration-color:#111">Contraté más vendedores</h3><p style="margin:0;color:#555;line-height:1.55">Multiplicaste el desorden por tres. Y la nómina también.</p></div>
+<div style="border:1px solid #aaa;border-radius:20px;padding:28px"><h3 style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;text-decoration:line-through;text-decoration-color:#111">Compré un CRM</h3><p style="margin:0;color:#555;line-height:1.55">Ahora tienes el caos digitalizado. Y una suscripción mensual.</p></div>
+<div style="border:1px solid #aaa;border-radius:20px;padding:28px"><h3 style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;text-decoration:line-through;text-decoration-color:#111">Les pedí que le echaran más ganas</h3><p style="margin:0;color:#555;line-height:1.55">Curso, coach, junta motivacional. Salieron prendidos el viernes; el lunes vendían igual.</p></div>
+<div style="border:1px solid #aaa;border-radius:20px;padding:28px"><h3 style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;text-decoration:line-through;text-decoration-color:#111">Le subí a la pauta</h3><p style="margin:0;color:#555;line-height:1.55">Pagaste por prospectos que nadie atendió a tiempo. Se enfriaron en el WhatsApp de alguien.</p></div>
+<div style="border:1px solid #aaa;border-radius:20px;padding:28px"><h3 style="margin:0 0 10px;font-family:Arial,Helvetica,sans-serif;font-size:20px;text-decoration:line-through;text-decoration-color:#111">Más juntas, más presión</h3><p style="margin:0;color:#555;line-height:1.55">Revisión diaria, regaño semanal. El equipo aprendió a reportar bonito, no a vender mejor.</p></div>
+</div>
+<p style="margin:48px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.4;color:#111">Tu equipo no necesita un pastor. <span style="color:#111">Necesita un camino trazado.</span></p>
+</div>
+</section>
+
+<!-- 4. PUENTE -->
+<section style="max-width:1100px;margin:0 auto;padding:112px 24px">
+<div style="text-align:center">
+<p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">UNA NUEVA FORMA DE PENSARLO</p>
+<h2 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:56px;line-height:1.08">No es pastorear más. No es echarle más ganas. <strong style="font-weight:700">Es tener método.</strong></h2>
+<p style="margin:28px auto 0;font-size:19px;line-height:1.65;max-width:760px;color:#555">Tu contabilidad no depende de que el contador ande inspirado. Tu producción no depende del humor del jefe de planta. ¿Por qué tus ventas sí? <strong>SBOS</strong> convierte la venta en disciplinas: se hacen igual todos los días, se miden cada semana y se corrigen cada mes. El equipo sabe qué hacer sin que nadie lo ande arreando.</p>
+</div>
+<div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+<div style="background:#fff;border:1px solid #bbb;border-radius:16px;padding:24px"><p style="margin:0;color:#777;text-decoration:line-through">Pastorear vendedor por vendedor</p><p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:20px;color:#111">→ Un método que cualquiera ejecuta</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:16px;padding:24px"><p style="margin:0;color:#777;text-decoration:line-through">La intuición del dueño</p><p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:20px;color:#111">→ Datos en un tablero</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:16px;padding:24px"><p style="margin:0;color:#777;text-decoration:line-through">Meses buenos y meses malos</p><p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:20px;color:#111">→ Un flujo predecible</p></div>
+</div>
+</section>
+
+<!-- 5. DISCIPLINAS SBOS -->
+<section id="disciplinas" style="background:#f4f4f4;color:#111;border-top:1px solid #ccc">
+<div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+<p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">LAS DISCIPLINAS SBOS</p>
+<h2 style="margin:0 0 48px;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:44px;line-height:1.15;max-width:880px">Cinco disciplinas. <strong style="font-weight:700">Cada una desactiva uno de los problemas que acabas de leer.</strong></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px">
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px;border-top:1px solid #bbb;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:21px">Prospección sistemática</h3><p style="margin:0;color:#555;line-height:1.55;flex-grow:1">Una máquina de prospectos que trabaja aunque nadie se acuerde de prenderla.</p><p style="margin:0;font-size:13px;color:#111">Desactiva: vender por rachas</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px;border-top:1px solid #bbb;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:21px">Estrategia comercial</h3><p style="margin:0;color:#555;line-height:1.55;flex-grow:1">La meta anual traducida a lo que cada persona hace el martes a las 10.</p><p style="margin:0;font-size:13px;color:#111">Desactiva: metas sin mapa</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px;border-top:1px solid #bbb;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:21px">Método de venta</h3><p style="margin:0;color:#555;line-height:1.55;flex-grow:1">Playbook, guiones y etapas iguales para todos. El conocimiento se queda en la empresa, no en el vendedor.</p><p style="margin:0;font-size:13px;color:#111">Desactiva: talento que se va</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px;border-top:1px solid #bbb;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:21px">Gerencia y seguimiento</h3><p style="margin:0;color:#555;line-height:1.55;flex-grow:1">Rituales semanales y un tablero que dice exactamente dónde se atora cada venta.</p><p style="margin:0;font-size:13px;color:#111">Desactiva: gerentes apagafuegos</p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:28px;border-top:1px solid #bbb;display:flex;flex-direction:column;gap:10px"><h3 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:21px">Dirección y estructura</h3><p style="margin:0;color:#555;line-height:1.55;flex-grow:1">Roles y decisiones claras para que vuelvas al lugar del que nunca debiste bajar: arriba.</p><p style="margin:0;font-size:13px;color:#111">Desactiva: dueño atrapado</p></div>
+</div>
+<div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+<button type="button" onclick="openModal()" style="font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:18px;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:18px 34px;min-height:56px;cursor:pointer">Quiero ver cómo se instala en mi empresa</button>
+<span style="color:#555;font-size:15px">Video de 3 minutos. Lo ven dueños, no curiosos.</span>
+</div>
+</div>
+</section>
+
+<!-- 6. RESULTADOS -->
+<section id="recursos" style="max-width:1200px;margin:0 auto;padding:96px 24px">
+<p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#111">RESULTADOS</p>
+<h2 style="margin:0 0 40px;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:44px;line-height:1.15;max-width:880px">No vendemos horas de consultoría. <strong style="font-weight:700">Vendemos esto:</strong></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">LIBERTAD</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">[X] h</p><p style="margin:0;line-height:1.5">a la semana que el dueño dejó de pasar cerrando ventas. <span style="color:#666">[Cliente · giro]</span></p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">CONTROL</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">[X]%</p><p style="margin:0;line-height:1.5">de acierto en el pronóstico del mes. Lo sabe el lunes, sin preguntarle a nadie. <span style="color:#666">[Cliente · giro]</span></p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">CRECIMIENTO</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">+[X]%</p><p style="margin:0;line-height:1.5">en tasa de cierre con el mismo equipo y la misma pauta. <span style="color:#666">[Cliente · giro]</span></p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">DOMINIO</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">[X] de [X]</p><p style="margin:0;line-height:1.5">vendedores con el mismo método. Ya no hay "estilos". <span style="color:#666">[Cliente · giro]</span></p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">FAMILIA</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">[X] días</p><p style="margin:0;line-height:1.5">de vacaciones sin abrir el WhatsApp de la empresa. <span style="color:#666">[Cliente · giro]</span></p></div>
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;padding:32px"><p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:3px;color:#555">TRASCENDENCIA</p><p style="margin:10px 0 6px;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:48px;color:#111">[X]</p><p style="margin:0;line-height:1.5">Una empresa que vale más porque ya no depende de su fundador. <span style="color:#666">[Cliente · giro]</span></p></div>
+</div>
+<p style="margin:64px 0 20px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#555;text-align:center">YA OPERAN CON SBOS</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">
+<div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 1</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 2</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 3</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 4</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 5</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 6</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 7</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 8</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 9</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 10</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 11</div><div style="height:72px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px">Logo 12</div>
+</div>
+</section>
+
+<!-- 7. PARA QUIÉN -->
+<section style="background:#e4e4e4;border-top:1px solid #ccc;border-bottom:1px solid #ccc">
+<div style="max-width:1200px;margin:0 auto;padding:48px 24px;display:flex;flex-wrap:wrap;gap:24px 48px">
+<p style="margin:0;flex:1 1 420px;font-size:18px;line-height:1.55"><strong style="font-family:Arial,Helvetica,sans-serif">Es para ti</strong> si tu empresa ya factura, tienes gente vendiendo y sientes que creciste hasta donde tu tiempo alcanzó.</p>
+<p style="margin:0;flex:1 1 420px;font-size:18px;line-height:1.55"><strong style="font-family:Arial,Helvetica,sans-serif">No es para ti</strong> si buscas motivación, un truco para vender el doble en 30 días o resultados sin que tu equipo cambie hábitos.</p>
+</div>
+</section>
+
+<!-- 8. FAQ -->
+<section style="max-width:860px;margin:0 auto;padding:96px 24px">
+<h2 style="margin:0 0 32px;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:40px">Lo que nos preguntan <strong style="font-weight:700">antes de la llamada</strong></h2>
+<details style="border-top:1px solid #c9c9c9;padding:20px 0"><summary style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;cursor:pointer">¿Esto es otro curso de ventas?</summary><p style="margin:12px 0 0;line-height:1.6">No. Un curso cambia a una persona por una semana. SBOS cambia cómo opera tu empresa: procesos, tableros, roles y seguimiento, instalados con tu equipo.</p></details>
+<details style="border-top:1px solid #c9c9c9;padding:20px 0"><summary style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;cursor:pointer">¿Cuánto cuesta?</summary><p style="margin:12px 0 0;line-height:1.6">Depende del tamaño de tu operación y de qué disciplinas necesitas primero. En el diagnóstico te damos un número, no un rango vago. [Opcional: desde $X]</p></details>
+<details style="border-top:1px solid #c9c9c9;padding:20px 0"><summary style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;cursor:pointer">¿Cuánto tarda en verse?</summary><p style="margin:12px 0 0;line-height:1.6">[X] semanas para tener las primeras disciplinas operando. Los primeros cambios visibles llegan antes: [ejemplo real].</p></details>
+<details style="border-top:1px solid #c9c9c9;padding:20px 0"><summary style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;cursor:pointer">¿Tengo que parar la operación?</summary><p style="margin:12px 0 0;line-height:1.6">No. Se instala sobre el día a día, por etapas, con sesiones presenciales y seguimiento semanal.</p></details>
+<details style="border-top:1px solid #c9c9c9;border-bottom:1px solid #c9c9c9;padding:20px 0"><summary style="font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:19px;cursor:pointer">Ya contraté consultores y no pasó nada.</summary><p style="margin:12px 0 0;line-height:1.6">Por eso no entregamos un reporte y nos vamos. Implementamos con tu equipo hasta que cada disciplina se sostiene sola, y lo medimos.</p></details>
+</section>
+
+<!-- 9. CTA FINAL -->
+<section style="background:#f4f4f4;color:#111;border-top:1px solid #ccc;text-align:center">
+<div style="max-width:940px;margin:0 auto;padding:104px 24px">
+<h2 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-weight:300;font-size:48px;line-height:1.12">Puedes seguir pastoreando vendedores. <strong style="font-weight:700;color:#111">O dirigir un equipo que vende con método.</strong></h2>
+<p style="margin:20px 0 36px;font-size:18px;color:#555">Son 3 minutos. Si al terminar te hace sentido, agendas ahí mismo.</p>
+<button type="button" id="homeCtaBtn" onclick="openModal()" style="font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:18px;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:18px 34px;min-height:56px;cursor:pointer">Ver el video de 3 minutos</button>
+</div>
+<footer style="border-top:1px solid #bbb;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">GRUPO NUWEK · PACHUCA, HIDALGO · NUWEK.MX</footer>
+</section>
+
+</main>
+<main id="pageSol" hidden>
+<section style="background:#f4f4f4;border-bottom:1px solid #ccc">
+<div style="max-width:1200px;margin:0 auto;padding:72px 24px 48px">
+<p style="margin:0 0 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;color:#555">SOLUCIONES</p>
+<h1 style="margin:0;font-size:52px;font-weight:300;line-height:1.08;max-width:900px">Tres frentes. <strong style="font-weight:700">Un mismo método.</strong></h1>
+<p style="margin:20px 0 0;font-size:19px;line-height:1.6;color:#444;max-width:700px">Elige por dónde se te está yendo la venta. Cada solución ataca un tipo de problema distinto, y las tres hablan el mismo idioma: SBOS.</p>
+</div></section>
+<section id="solCards" style="max-width:1200px;margin:0 auto;padding:48px 24px 0">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px"><button type="button" class="solcard" id="card_consultoria" onclick="pickSol('consultoria',true)">
+<div style="height:220px;background:#e4e4e4;border-bottom:1px solid #bbb;position:relative;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px;padding:16px;text-align:center">[IMAGEN: dueño pastoreando a su equipo]
+<div class="tagrow" style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px"><div class="tagtrack"><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Todo pasa por ti</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">No hay proceso de venta</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Gerentes apagafuegos</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Ventas impredecibles</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Todo pasa por ti</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">No hay proceso de venta</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Gerentes apagafuegos</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Ventas impredecibles</span></div></div></div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:8px;text-align:left"><strong style="font-size:22px">Consultoría</strong><span style="color:#555;line-height:1.5">Instalamos el sistema comercial de tu empresa.</span><span class="solcta" style="font-size:14px;font-weight:700;text-decoration:underline">Ver este mundo ↓</span></div></button><button type="button" class="solcard" id="card_capacitacion" onclick="pickSol('capacitacion',true)">
+<div style="height:220px;background:#e4e4e4;border-bottom:1px solid #bbb;position:relative;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px;padding:16px;text-align:center">[IMAGEN: vendedor improvisando frente a un cliente]
+<div class="tagrow" style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px"><div class="tagtrack"><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Cada quien vende a su estilo</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Los nuevos tardan meses</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Objeciones sin respuesta</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Cursos que no se aplican</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Cada quien vende a su estilo</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Los nuevos tardan meses</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Objeciones sin respuesta</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Cursos que no se aplican</span></div></div></div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:8px;text-align:left"><strong style="font-size:22px">Capacitación</strong><span style="color:#555;line-height:1.5">Entrenamos a tu equipo para ejecutar el método.</span><span class="solcta" style="font-size:14px;font-weight:700;text-decoration:underline">Ver este mundo ↓</span></div></button><button type="button" class="solcard" id="card_marketing" onclick="pickSol('marketing',true)">
+<div style="height:220px;background:#e4e4e4;border-bottom:1px solid #bbb;position:relative;display:flex;align-items:center;justify-content:center;color:#666;font-size:13px;padding:16px;text-align:center">[IMAGEN: prospectos perdidos en el WhatsApp]
+<div class="tagrow" style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:6px"><div class="tagtrack"><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Pauta sin retorno</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Leads que se enfrían</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Viralidad sin ventas</span><span style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Marketing y ventas no se hablan</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Pauta sin retorno</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Leads que se enfrían</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Viralidad sin ventas</span><span class="dup" aria-hidden="true" style="background:#fff;border:1px solid #999;border-radius:99px;padding:4px 10px;font-size:12px;color:#111">Marketing y ventas no se hablan</span></div></div></div>
+<div style="padding:20px;display:flex;flex-direction:column;gap:8px;text-align:left"><strong style="font-size:22px">Marketing Digital</strong><span style="color:#555;line-height:1.5">Prospectos que tu equipo sí puede cerrar.</span><span class="solcta" style="font-size:14px;font-weight:700;text-decoration:underline">Ver este mundo ↓</span></div></button></div>
+</section>
+<section id="solWorld" style="max-width:1200px;margin:0 auto;padding:56px 24px 96px">
+<p id="solHint" style="margin:0;text-align:center;color:#666;border:1px dashed #bbb;border-radius:16px;padding:32px">Selecciona una solución para ver su mundo.</p>
+<div id="world_consultoria" class="world" hidden>
+<div class="scrolly"><div class="stick">
+<div class="whead"><p class="wk" style="margin:0 0 4px;font-size:13px;letter-spacing:3px;color:#555">CONSULTORÍA</p>
+<h2 class="wt" style="margin:0;font-size:36px;font-weight:300;line-height:1.15;max-width:880px"><strong style="font-weight:700">Consultoría SBOS: deja de pastorear, empieza a dirigir</strong></h2>
+<p class="wl" style="margin:8px 0 0;font-size:18px;line-height:1.6;color:#444;max-width:760px">Entramos a tu empresa, medimos cómo vende hoy y montamos las disciplinas que faltan. Con tu equipo, sobre la operación del día a día.</p>
+</div>
+<div class="prow">
+<div class="pbox"><p style="margin:0 0 14px;font-weight:700;font-size:20px">Problemas que resuelve</p><ul class="plist"><li><span class="pn">01</span>Las ventas dependen de ti o de un par de vendedores</li><li><span class="pn">02</span>No hay un proceso escrito: cada venta se hace distinto</li><li><span class="pn">03</span>Tu gerente apaga fuegos en vez de dirigir</li><li><span class="pn">04</span>No sabes cuánto vas a vender el próximo mes</li></ul></div>
+<div class="drawbox"><div class="hint"><span class="htxt">Desliza para ver cómo lo resolvemos</span><span class="bob" aria-hidden="true">↓</span><span class="pnum" style="margin-left:auto;font-weight:400;color:#555"></span></div><div class="draw" data-i="0">[IMAGEN 0 · los problemas: dueño rodeado de llamadas, vendedores esperando instrucciones y fuegos que apagar]</div><div class="draw" data-i="1" hidden>[IMAGEN 1 · paso 1: radar de los 11 subsistemas llenándose]</div><div class="draw" data-i="2" hidden>[IMAGEN 2 · paso 2: organigrama y flujo de venta armándose pieza por pieza]</div><div class="draw" data-i="3" hidden>[IMAGEN 3 · paso 3: calendario con semanas que se van palomeando]</div><div class="draw" data-i="4" hidden>[IMAGEN 4 · paso 4: el equipo vendiendo solo mientras el director, por fin, ve el negocio desde arriba]</div></div>
+</div>
+<div class="srow"><div class="sc" data-i="0"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 1</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Diagnóstico</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Calificamos los 11 subsistemas comerciales de tu empresa y ubicamos los cuellos de botella.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Diagnóstico de madurez comercial</strong></p></div><div class="sc" data-i="1"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 2</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Diseño</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Definimos estructura, roles, procesos y tableros a la medida.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Estructura, roles y procesos documentados</strong></p></div><div class="sc" data-i="2"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 3</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Implementación</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Sesiones presenciales y seguimiento semanal hasta que opere solo.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Plan de implementación por etapas</strong></p></div><div class="sc" data-i="3"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 4</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Réplica</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Tu equipo vende con el método por sí solo: sin Nuwek a un lado y sin ti detrás pastoreando.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Un equipo que repite el método solo, y el kit para enseñárselo a cada nuevo integrante</strong></p></div></div>
+</div></div>
+<div class="ctaband">
+<p style="margin:0;flex:2 1 420px;font-size:21px;line-height:1.55">Si ya contrataste más vendedores, compraste un CRM y hasta trajiste un gerente con experiencia… y aun así todo sigue pasando por ti y sientes que la empresa no avanza si no estás encima, no te falta esfuerzo. <strong>Te falta método.</strong></p>
+<div style="flex:1 1 240px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+<button type="button" onclick="openContact('Consultoría')" class="agbtn" style="font-size:18px;padding:18px 34px;min-height:56px">Quiero esta solución</button>
+<span style="font-size:13px;color:#555">Llámanos, escríbenos o agenda tu cita</span>
+<a href="#" onclick="document.getElementById('solCards').scrollIntoView();return false;" style="font-size:14px;padding:8px 0">Ver otra solución ↑</a></div>
+</div>
+</div><div id="world_capacitacion" class="world" hidden>
+<div class="scrolly"><div class="stick">
+<div class="whead"><p class="wk" style="margin:0 0 4px;font-size:13px;letter-spacing:3px;color:#555">CAPACITACIÓN</p>
+<h2 class="wt" style="margin:0;font-size:36px;font-weight:300;line-height:1.15;max-width:880px"><strong style="font-weight:700">Capacitación: que todo tu equipo venda igual de bien</strong></h2>
+<p class="wl" style="margin:8px 0 0;font-size:18px;line-height:1.6;color:#444;max-width:760px">Convertimos el método en hábito. Tu equipo practica con guiones, casos reales y simuladores de venta con IA hasta que lo hace sin pensar.</p>
+</div>
+<div class="prow">
+<div class="pbox"><p style="margin:0 0 14px;font-weight:700;font-size:20px">Problemas que resuelve</p><ul class="plist"><li><span class="pn">01</span>Cada vendedor vende a su manera</li><li><span class="pn">02</span>Los nuevos tardan meses en producir</li><li><span class="pn">03</span>Se pierden ventas en las mismas objeciones</li><li><span class="pn">04</span>Los cursos motivan una semana y se olvidan</li></ul></div>
+<div class="drawbox"><div class="hint"><span class="htxt">Desliza para ver cómo lo resolvemos</span><span class="bob" aria-hidden="true">↓</span><span class="pnum" style="margin-left:auto;font-weight:400;color:#555"></span></div><div class="draw" data-i="0">[IMAGEN 0 · los problemas: equipo donde cada vendedor le habla distinto al mismo cliente, que se ve confundido]</div><div class="draw" data-i="1" hidden>[IMAGEN 1 · paso 1: libro que se abre mostrando las etapas de venta y sus guiones]</div><div class="draw" data-i="2" hidden>[IMAGEN 2 · paso 2: equipo en sesión practicando con casos reales]</div><div class="draw" data-i="3" hidden>[IMAGEN 3 · paso 3: vendedor conversando con un cliente virtual]</div><div class="draw" data-i="4" hidden>[IMAGEN 4 · paso 4: coach revisando el avance de cada vendedor]</div></div>
+</div>
+<div class="srow"><div class="sc" data-i="0"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 1</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Playbook y manual de ventas</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Documentamos cómo se vende en tu empresa: etapas, perfiles de cliente y guiones para cada momento.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Sales Playbook y manual de ventas con guiones</strong></p></div><div class="sc" data-i="1"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 2</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Capacitación</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Entrenamos a tu equipo en el método, con casos reales de tu empresa.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Sesiones de capacitación por etapa de venta</strong></p></div><div class="sc" data-i="2"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 3</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Simuladores</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Practican con clientes virtuales hasta que el método les sale solo, sin quemar prospectos reales.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Acceso a simuladores de práctica</strong></p></div><div class="sc" data-i="3"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 4</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Coacheo y seguimiento</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Acompañamos a cada vendedor, medimos su avance y reforzamos donde falla.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Reporte de avance por vendedor y plan de inducción</strong></p></div></div>
+</div></div>
+<div class="ctaband">
+<p style="margin:0;flex:2 1 420px;font-size:21px;line-height:1.55">Si ya mandaste a tu equipo a cursos, les pediste que le echaran más ganas y repites lo mismo en cada junta… y aun así cada quien sigue vendiendo a su manera y sientes que enseñas lo mismo cada mes, es momento de que <strong>el método se vuelva hábito.</strong></p>
+<div style="flex:1 1 240px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+<button type="button" onclick="openContact('Capacitación')" class="agbtn" style="font-size:18px;padding:18px 34px;min-height:56px">Quiero esta solución</button>
+<span style="font-size:13px;color:#555">Llámanos, escríbenos o agenda tu cita</span>
+<a href="#" onclick="document.getElementById('solCards').scrollIntoView();return false;" style="font-size:14px;padding:8px 0">Ver otra solución ↑</a></div>
+</div>
+</div><div id="world_marketing" class="world" hidden>
+<div class="scrolly"><div class="stick">
+<div class="whead"><p class="wk" style="margin:0 0 4px;font-size:13px;letter-spacing:3px;color:#555">MARKETING DIGITAL</p>
+<h2 class="wt" style="margin:0;font-size:36px;font-weight:300;line-height:1.15;max-width:880px"><strong style="font-weight:700">Marketing Digital: prospectos que sí se convierten en ventas</strong></h2>
+<p class="wl" style="margin:8px 0 0;font-size:18px;line-height:1.6;color:#444;max-width:760px">No medimos likes. Medimos cuántos prospectos llegan, cuántos atiende tu equipo y cuántos cierra. La pauta y el contenido se diseñan desde ventas, no al revés.</p>
+</div>
+<div class="prow">
+<div class="pbox"><p style="margin:0 0 14px;font-weight:700;font-size:20px">Problemas que resuelve</p><ul class="plist"><li><span class="pn">01</span>Inviertes en pauta y no sabes qué te regresa</li><li><span class="pn">02</span>Llegan prospectos y nadie les contesta a tiempo</li><li><span class="pn">03</span>Tus publicaciones tienen alcance, pero no generan ventas</li><li><span class="pn">04</span>Marketing y ventas se echan la culpa</li></ul></div>
+<div class="drawbox"><div class="hint"><span class="htxt">Desliza para ver cómo lo resolvemos</span><span class="bob" aria-hidden="true">↓</span><span class="pnum" style="margin-left:auto;font-weight:400;color:#555"></span></div><div class="draw" data-i="0">[IMAGEN 0 · los problemas: dinero entrando a anuncios y prospectos perdiéndose en el camino antes de llegar a ventas]</div><div class="draw" data-i="1" hidden>[IMAGEN 1 · paso 1: mapa del cliente ideal y los canales donde está]</div><div class="draw" data-i="2" hidden>[IMAGEN 2 · paso 2: piezas gráficas y calendario de publicaciones]</div><div class="draw" data-i="3" hidden>[IMAGEN 3 · paso 3: anuncios publicándose junto a un tablero de costo por prospecto, cita y venta]</div><div class="draw" data-i="4" hidden>[IMAGEN 4 · paso 4: prospecto que viaja del anuncio al WhatsApp del vendedor]</div></div>
+</div>
+<div class="srow"><div class="sc" data-i="0"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 1</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Estrategia digital</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Definimos cliente ideal, oferta, canales y presupuesto: dónde invertir y dónde no.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Estrategia digital por canal</strong></p></div><div class="sc" data-i="1"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 2</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Estrategia gráfica y de contenidos</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Diseñamos la línea visual y los contenidos que hablan del problema de tu cliente, no de tu empresa.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Línea gráfica y calendario de contenidos</strong></p></div><div class="sc" data-i="2"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 3</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Campañas y reportes</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Lanzamos la pauta y cada mes te decimos cuánto cuesta un prospecto, una cita y una venta.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Campañas activas y reporte mensual de resultados</strong></p></div><div class="sc" data-i="3"><p style="margin:0 0 6px;font-size:12px;letter-spacing:2px">PASO 4</p><p style="margin:0 0 8px;font-weight:700;font-size:20px">Conexión con ventas</p><p style="margin:0 0 12px;line-height:1.5;font-size:15px">Cada prospecto entra a un proceso con seguimiento: nadie se queda en visto.</p><p class="scout" style="margin:auto 0 0;font-size:13px;padding-top:10px;border-top:1px solid currentColor">Te llevas: <strong>Embudo conectado a WhatsApp o CRM</strong></p></div></div>
+</div></div>
+<div class="ctaband">
+<p style="margin:0;flex:2 1 420px;font-size:21px;line-height:1.55">Si ya le subiste a la pauta, cambiaste de agencia y publicas todos los días… y aun así los prospectos se enfrían y sientes que pagas por likes, es momento de que <strong>tu marketing trabaje para ventas.</strong></p>
+<div style="flex:1 1 240px;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+<button type="button" onclick="openContact('Marketing Digital')" class="agbtn" style="font-size:18px;padding:18px 34px;min-height:56px">Quiero esta solución</button>
+<span style="font-size:13px;color:#555">Llámanos, escríbenos o agenda tu cita</span>
+<a href="#" onclick="document.getElementById('solCards').scrollIntoView();return false;" style="font-size:14px;padding:8px 0">Ver otra solución ↑</a></div>
+</div>
+</div>
+</section>
+<footer style="border-top:1px solid #bbb;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:2px;color:#555">GRUPO NUWEK · PACHUCA, HIDALGO · NUWEK.MX</footer>
+</main>
+<main id="pageThanks" hidden style="min-height:100vh;display:flex;flex-direction:column">
+<div class="ty-img">[IMAGEN PRINCIPAL DE AGRADECIMIENTO]</div>
+<div style="text-align:center;padding:40px 24px 56px;display:flex;flex-direction:column;align-items:center;gap:10px">
+<h1 id="tyTitle" style="margin:0;font-size:44px;line-height:1.1"></h1>
+<p id="tyWhen" style="margin:0;font-size:20px"></p>
+<p style="margin:0;color:#666;font-size:14px">La confirmación te llega por WhatsApp.</p>
+<a href="#" onclick="goHome();return false;" style="margin-top:14px;font-size:14px">Volver a nuwek.mx</a>
+</div></main>
+<main id="pageAgenda" hidden style="background:#f4f4f4;min-height:100vh">
+<div style="background:#fff;border-bottom:1px solid #bbb"><div style="max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+<span style="display:flex;align-items:center;justify-content:center;width:140px;height:44px;border:1px dashed #999;color:#666;font-size:13px;letter-spacing:2px">[ LOGO ]</span>
+<a href="#" onclick="goHome();return false;" style="font-size:14px;padding:12px 0">← Volver a nuwek.mx</a></div></div>
+<p style="max-width:1100px;margin:16px auto 0;padding:0 24px;font-size:12px;color:#666;box-sizing:border-box">Nota de maqueta: en producción esta página vive en su propia dirección (ej. nuwek.mx/agenda).</p>
+<div style="max-width:1100px;margin:16px auto 64px;padding:0 24px;box-sizing:border-box">
+<div style="background:#fff;border:1px solid #bbb;border-radius:20px;display:flex;flex-wrap:wrap;overflow:hidden">
+<aside style="flex:1 1 280px;padding:32px;border-right:1px solid #ddd;display:flex;flex-direction:column;gap:14px;box-sizing:border-box">
+<p style="margin:0;font-size:13px;letter-spacing:2px;color:#555">GRUPO NUWEK</p>
+<h1 style="margin:0;font-size:28px;line-height:1.2">Diagnóstico comercial</h1>
+<p style="margin:0;color:#444;line-height:1.7">45 minutos<br>Videollamada o teléfono</p>
+<p style="margin:0;color:#444;line-height:1.55">Revisamos cómo vende hoy tu empresa, dónde se atora la venta y qué disciplina conviene atacar primero. Te llevas un diagnóstico aunque no trabajemos juntos.</p>
+<div id="agSummary" hidden style="border-top:1px solid #ddd;padding-top:14px"><p style="margin:0;font-size:13px;color:#555">TU CITA</p><p id="agSummaryTxt" style="margin:4px 0 0;font-weight:700"></p></div>
+</aside>
+<section style="flex:3 1 520px;padding:32px;box-sizing:border-box;min-width:0">
+<div id="agStep1">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+<h2 style="margin:0;font-size:22px">Elige día y hora</h2>
+<div style="display:flex;align-items:center;gap:8px"><button type="button" id="agPrev" onclick="agWeek(-1)" aria-label="Semana anterior" class="agnav">‹</button><span id="agRange" style="min-width:150px;text-align:center;font-weight:700"></span><button type="button" onclick="agWeek(1)" aria-label="Semana siguiente" class="agnav">›</button></div>
+</div>
+<div id="agGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px"></div>
+<p style="margin:16px 0 0;font-size:13px;color:#666">Horario del centro de México</p>
+<div id="agPick" hidden style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:#f4f4f4;border-radius:12px;padding:16px">
+<span id="agPickTxt" style="font-weight:700"></span>
+<button type="button" onclick="agGo(2)" class="agbtn">Continuar →</button></div>
+</div>
+<div id="agStep2" hidden>
+<button type="button" onclick="agGo(1)" style="border:0;background:none;padding:10px 0;margin-bottom:8px;cursor:pointer;font:inherit;text-decoration:underline">← Cambiar horario</button>
+<h2 style="margin:0 0 20px;font-size:22px">Tus datos</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+<label>Nombre<input id="ag_name" placeholder="Tu nombre"></label>
+<label>WhatsApp<input id="ag_phone" type="tel" placeholder="10 dígitos"></label>
+<label>Correo electrónico<input id="ag_mail" type="email" placeholder="Para enviarte la invitación"></label>
+<label>Empresa<input id="ag_company" placeholder="Nombre de tu empresa"></label>
+<label>Página web<input placeholder="tuempresa.com (opcional)"></label>
+<label>¿Cuántas personas venden en tu empresa?<span class="seg" role="radiogroup"><button type="button" role="radio" aria-checked="true" class="segb on" onclick="segPick(this)">Solo yo</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">2 a 5</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">6 a 15</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">Más de 15</button></span></label>
+</div>
+<button type="button" onclick="agGo(3)" class="agbtn" style="margin-top:24px;width:100%">Confirmar cita</button>
+</div>
+<div id="agStep2p" hidden>
+<button type="button" onclick="agGo(1)" style="border:0;background:none;padding:10px 0;margin-bottom:8px;cursor:pointer;font:inherit;text-decoration:underline">← Cambiar horario</button>
+<h2 style="margin:0 0 6px;font-size:22px">Confirma tu cita</h2>
+<p style="margin:0 0 18px;color:#555">Ya tenemos tus datos. Solo revisa y confirma.</p>
+<div id="agPreBox" class="exres" style="gap:10px"></div>
+<button type="button" onclick="agConfirm()" class="agbtn" style="margin-top:24px;width:100%;background:#111;color:#fff">Confirmar cita</button>
+</div>
+<div id="agStep3" hidden style="text-align:center;padding:32px 0">
+<p style="margin:0;font-size:40px" aria-hidden="true">✓</p>
+<h2 id="agDoneTitle" style="margin:8px 0 12px;font-size:26px"></h2>
+<p id="agDoneTxt" style="margin:0 auto 24px;color:#444;line-height:1.6;max-width:460px"></p>
+<div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a href="#" class="agbtn" style="text-decoration:none" onclick="return false;">Agregar a mi calendario</a><a href="#" onclick="goHome();return false;" style="align-self:center">Volver a nuwek.mx</a></div>
+</div>
+</section></div></div>
+</main>
+<!-- CONTACTO -->
+<div id="contactModal" hidden>
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:30;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto" onclick="if(event.target===this)closeContact()">
+<div role="dialog" aria-label="Contacto Grupo Nuwek" style="background:#fff;border-radius:24px;width:100%;max-width:720px;padding:32px;box-sizing:border-box;position:relative">
+<button type="button" aria-label="Cerrar" onclick="closeContact()" style="position:absolute;top:12px;right:12px;width:44px;height:44px;border:0;background:transparent;font-size:26px;cursor:pointer">×</button>
+<h2 style="margin:0 0 6px;font-size:28px">Hablemos de tu equipo comercial</h2>
+<p style="margin:0 0 24px;color:#444">Elige cómo prefieres contactarnos.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+<a class="copt" href="tel:+527711915922"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><strong style="font-size:20px">Llámanos</strong><span style="font-size:18px">771 191 5922</span><span style="color:#555;font-size:14px">Lunes a viernes · [horario de atención]</span></a>
+<a class="copt" id="waContact" target="_blank" rel="noopener" href="#"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.4-4A8 8 0 1 1 8 18.6z"/></svg><strong style="font-size:20px">Escríbenos por WhatsApp</strong><span style="font-size:18px">771 191 5922</span><span style="color:#555;font-size:14px">Te respondemos en horario laboral</span></a>
+</div>
+<button type="button" class="copt" onclick="goAgenda()" style="width:100%;margin-top:16px;flex-direction:row;align-items:center;gap:16px;text-align:left"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span style="display:flex;flex-direction:column;gap:4px;flex:1"><strong style="font-size:20px">Agendar una cita</strong><span style="color:#555;font-size:14px">Elige día y hora en nuestro calendario · 45 min · videollamada o teléfono</span></span><span style="font-size:22px" aria-hidden="true">→</span></button>
+</div></div></div>
+<main id="pageRec" hidden>
+<!-- 1. Tipos + últimos -->
+<section style="background:#f4f4f4;border-bottom:1px solid #ccc">
+<div style="max-width:1200px;margin:0 auto;padding:56px 24px;display:flex;flex-wrap:wrap;gap:40px">
+<div style="flex:1 1 260px;max-width:340px">
+<p style="margin:0 0 12px;font-size:13px;letter-spacing:3px;color:#555">RECURSOS</p>
+<h1 style="margin:0 0 24px;font-size:40px;font-weight:300;line-height:1.1">Aprende a dirigir, <strong style="font-weight:700">no a pastorear.</strong></h1>
+<nav aria-label="Tipos de recurso" id="recSide" style="display:flex;flex-direction:column;border-top:1px solid #ccc"></nav>
+</div>
+<div style="flex:3 1 560px;min-width:0">
+<p style="margin:0 0 16px;font-weight:700;font-size:18px">Lo más reciente</p>
+<div class="marquee" aria-label="Recursos más recientes"><div id="recLatest" class="track"></div></div>
+<p style="margin:10px 0 0;font-size:12px;color:#666">Pasa el mouse encima para detener el carrusel.</p>
+</div>
+</div>
+</section>
+<!-- 2. Filtro por tipo + buscador -->
+<section id="recFilters" style="border-bottom:1px solid #ccc;background:#fff;position:sticky;top:79px;z-index:4">
+<div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between">
+<div id="recTabs" style="display:flex;flex-wrap:wrap;align-items:center;font-size:15px"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;flex:1 1 600px">
+<label style="flex:1 1 200px;font-weight:400"><span style="position:absolute;left:-9999px">Buscar recursos</span><input id="recQ" type="search" placeholder="Buscar: playbook, CRM, embudo…" oninput="recDraw()"></label>
+<label style="flex:0 0 160px;font-weight:400"><span style="position:absolute;left:-9999px">Fecha</span><select id="recDate" onchange="recDraw()"><option value="0">Cualquier fecha</option><option value="7">Últimos 7 días</option><option value="30">Últimos 30 días</option><option value="90">Últimos 3 meses</option><option value="365">Último año</option></select></label>
+<label id="recStWrap" hidden style="flex:0 0 165px;font-weight:400"><span style="position:absolute;left:-9999px">Estado</span><select id="recSt" onchange="recDraw()"><option value="">Todos los estados</option><option>Publicado</option><option>En revisión</option><option>Borrador</option></select></label>
+<label style="flex:0 0 150px;font-weight:400"><span style="position:absolute;left:-9999px">Ordenar</span><select id="recSort" onchange="recDraw()"><option value="new">Más recientes</option><option value="az">A – Z</option></select></label>
+</div>
+</div>
+</section>
+<!-- 3. Resultados -->
+<section style="max-width:1200px;margin:0 auto;padding:40px 24px 96px">
+<p id="recCount" style="margin:0 0 20px;color:#555"></p>
+<div id="recLogin" hidden></div>
+<div id="recGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px"></div>
+<p id="recEmpty" hidden style="text-align:center;color:#666;border:1px dashed #bbb;border-radius:16px;padding:40px">No encontramos recursos con esos filtros.</p>
+</section>
+<footer style="border-top:1px solid #bbb;padding:24px;font-size:12px;letter-spacing:2px;color:#555">GRUPO NUWEK · PACHUCA, HIDALGO · NUWEK.MX</footer>
+</main>
+
+<main id="pageVlog" hidden><div id="vlogBody" style="max-width:1200px;margin:0 auto;padding:32px 24px 80px"></div></main>
+<main id="pageDic" hidden><div id="dicBody" style="max-width:1200px;margin:0 auto;padding:32px 24px 80px"></div></main>
+<main id="pageNew" hidden><div id="newBody" style="max-width:1200px;margin:0 auto;padding:32px 24px 80px"></div></main>
+<main id="pageInt" hidden><div id="intBody" style="max-width:1200px;margin:0 auto;padding:32px 24px 80px"></div></main>
+<!-- VISOR EXAMEN / SIMULADOR (libro) -->
+<div id="examModal" hidden>
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:12px" onclick="if(event.target===this)closeX('examModal')">
+<div class="bkw" style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:1100px;color:#fff;gap:12px">
+<strong id="exTitle"></strong><span id="exStage" style="font-size:13px;margin-left:auto"></span>
+<button type="button" aria-label="Cerrar" onclick="closeX('examModal')" style="width:44px;height:44px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer">×</button></div>
+<div class="bkw" style="width:100%;max-width:1100px;height:6px;background:#444;border-radius:9px;overflow:hidden"><div id="exBar" style="height:6px;background:#fff;width:0;transition:width .4s"></div></div>
+<div id="book2" class="book2 bkw"><div id="bookL" class="bkpage"></div><div id="bookR" class="bkpage" aria-hidden="true"></div></div>
+</div></div>
+<!-- VISOR FLIPBOOK -->
+<div id="flipModal" hidden>
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:16px" onclick="if(event.target===this)closeX('flipModal')">
+<div style="display:flex;justify-content:space-between;align-items:center;width:100%;max-width:900px;color:#fff">
+<strong id="flipTitle"></strong>
+<button type="button" aria-label="Cerrar" onclick="closeX('flipModal')" style="width:44px;height:44px;border:0;background:transparent;color:#fff;font-size:28px;cursor:pointer">×</button></div>
+<div class="book" id="book">
+<div class="leaf" style="z-index:4"><div class="pg front" style="justify-content:center;align-items:center;text-align:center;background:#ddd"><p style="margin:0;font-size:13px;letter-spacing:3px">EBOOK · GRUPO NUWEK</p><h2 id="flipCover" style="margin:12px 0;font-size:30px"></h2><p style="margin:0;color:#555">[PORTADA]</p></div>
+<div class="pg back"><p class="pk">CAPÍTULO 1</p><h3 style="margin:0 0 12px">El vendedor estrella es un riesgo</h3><p style="margin:0 0 12px;line-height:1.55;color:#444">Cuando la venta depende de una persona, la empresa depende de su humor, su salud y su permanencia.</p>
+<button type="button" class="more" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">+ ¿Por qué pasa esto?</button><p hidden style="margin:8px 0 0;line-height:1.55;color:#444;background:#f4f4f4;padding:12px;border-radius:8px">Texto desplegable: profundiza sin saturar la página.</p></div></div>
+<div class="leaf" style="z-index:3"><div class="pg front"><p class="pk">CASO</p><h3 style="margin:0 0 12px">Así suena una semana de pastoreo</h3>
+<div class="chat"><p class="bA"><b>Dueño:</b> ¿Ya llamaste al cliente de ayer?</p><p class="bB"><b>Vendedor:</b> Ahorita le marco, jefe.</p><p class="bA"><b>Dueño:</b> Eso me dijiste el lunes.</p><p class="bB"><b>Vendedor:</b> Es que no sabía qué decirle del precio…</p></div></div>
+<div class="pg back"><p class="pk">VIDEO</p><h3 style="margin:0 0 12px">Míralo en 90 segundos</h3><div style="aspect-ratio:16/9;background:#ddd;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#555">▶ [VIDEO INSERTADO]</div><p style="margin:12px 0 0;color:#444;line-height:1.5">Los videos se reproducen dentro de la página.</p></div></div>
+<div class="leaf" style="z-index:2"><div class="pg front" style="justify-content:center;text-align:center"><h3 style="margin:0 0 12px">¿Quieres instalar el método?</h3><button type="button" class="agbtn" onclick="closeX('flipModal');openContact()">Hablar con Nuwek</button></div>
+<div class="pg back" style="justify-content:center;align-items:center;background:#ddd"><p style="margin:0">[CONTRAPORTADA]</p></div></div>
+</div>
+<div style="display:flex;gap:16px;align-items:center;color:#fff">
+<button type="button" class="agnav" onclick="flip(-1)" aria-label="Página anterior">‹</button><span id="flipPg">Portada</span><button type="button" class="agnav" onclick="flip(1)" aria-label="Página siguiente">›</button></div>
+</div></div>
+<button type="button" id="floatCta" onclick="openModal()" aria-hidden="true" tabindex="-1">▶ Ver el video de 3 minutos</button>
+<!-- POPUP -->
+<div id="modal" hidden>
+<div style="position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:20;display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto">
+<div role="dialog" aria-label="Contacto Nuwek" style="background:#fff;border:1px solid #bbb;border-radius:24px;width:100%;max-width:640px;padding:32px;box-sizing:border-box;position:relative">
+<button type="button" aria-label="Cerrar" onclick="closeModal()" style="position:absolute;top:12px;right:12px;width:44px;height:44px;border:0;background:transparent;font-size:26px;cursor:pointer">×</button>
+
+<div id="stepForm">
+<div id="formBox" style="display:flex;flex-direction:column;gap:16px">
+<h2 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:28px;line-height:1.2">3 minutos para dejar de pastorear a tu equipo</h2>
+<p style="margin:0;color:#444">Déjanos tus datos: revisamos tu empresa antes de hablar contigo. Nada de llenarte de correos.</p>
+<label>Nombre<input id="f_name" placeholder="Tu nombre"></label>
+<label>WhatsApp<input type="tel" id="f_phone" placeholder="10 dígitos"></label>
+<label>Empresa<input id="f_company" placeholder="Nombre de tu empresa"></label>
+<label>Página web<input id="f_web" placeholder="tuempresa.com (opcional)"></label>
+<label>¿Cuántas personas venden en tu empresa?<span class="seg" role="radiogroup"><button type="button" role="radio" aria-checked="true" class="segb on" onclick="segPick(this)">Solo yo</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">2 a 5</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">6 a 15</button><button type="button" role="radio" aria-checked="false" class="segb" onclick="segPick(this)">Más de 15</button></span></label>
+<button type="button" onclick="submitForm(event)" style="font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:17px;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:16px;min-height:52px;cursor:pointer">Ver el video</button>
+</div>
+</div>
+
+<div id="stepVideo" hidden>
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:26px"><span id="greeting"></span></h2>
+<div style="aspect-ratio:16/9;background:#ddd;border-radius:16px;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#111">
+<button type="button" id="playBtn" onclick="togglePlay()" style="font-family:Arial,Helvetica,sans-serif;font-weight:700;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:14px 26px;min-height:48px;cursor:pointer">▶ Reproducir</button>
+<span style="font-size:13px;color:#555">VSL 3:00 · demo acelerada · sin adelantar</span>
+</div>
+<div style="height:8px;background:#e4e4e4;border-radius:99px;overflow:hidden"><div style="height:8px;background:#888;width:0%" id="bar"></div></div>
+<p style="margin:0;font-size:13px;color:#555"><span id="time">0:00 / 3:00</span> · <span id="pct">0</span>% visto</p>
+
+<div id="unlocked" hidden>
+<a href="#" onclick="agFromVsl();return false;" style="display:block;text-align:center;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:17px;background:#fff;color:#111;border:2px solid #111;border-radius:999px;padding:16px">Me hace sentido, quiero agendar →</a>
+</div>
+
+<div style="background:#f2f2f2;border-radius:12px;padding:16px">
+<p style="margin:0 0 8px;font-size:12px;letter-spacing:2px;font-family:Arial,Helvetica,sans-serif;color:#555">MENSAJE QUE SE ENVÍA POR WHATSAPP</p>
+<p style="margin:0;font-size:15px;line-height:1.5"><span id="waMsg"></span></p>
+</div>
+<a id="waLink" target="_blank" rel="noopener" href="#" style="display:block;text-align:center;text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-weight:600;font-size:16px;border:2px dashed #111;color:#111;border-radius:999px;padding:14px">Prefiero hablarlo por WhatsApp</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+const SOLN={consultoria:'Consultoría',capacitacion:'Capacitación',marketing:'Marketing Digital'};
+let curSol=null;
+function megaOpen(v){if(window.matchMedia('(hover:hover)').matches)$('mega').hidden=!v;}
+function showPage(p){$('pageHome').hidden=p!=='home';$('pageSol').hidden=p!=='sol';$('pageAgenda').hidden=p!=='agenda';$('pageRec').hidden=p!=='rec';$('pageVlog').hidden=p!=='vlog';$('pageDic').hidden=p!=='dic';$('pageInt').hidden=p!=='int';$('pageNew').hidden=p!=='new';$('pageThanks').hidden=p!=='thanks';$('siteHeader').hidden=p==='agenda'||p==='thanks';$('mega').hidden=true;}
+function goHome(anchor){showPage('home');if(anchor){$(anchor).scrollIntoView();}else{window.scrollTo(0,0);}}
+function goSol(id){showPage('sol');window.scrollTo(0,0);if(id)pickSol(id,true);}
+function pickSol(id,scroll){curSol=id;$('solHint').hidden=true;
+ Object.keys(SOLN).forEach(k=>{$('world_'+k).hidden=k!==id;$('card_'+k).classList.toggle('on',k===id);
+  $('card_'+k).querySelector('.solcta').textContent=k===id?'Abierto ↓':'Ver este mundo ↓';});
+ document.querySelectorAll('.scrolly').forEach(x=>delete x.dataset.a);setTimeout(storyTick,0);
+ if(scroll)setTimeout(()=>$('world_'+id).scrollIntoView({behavior:'smooth'}),30);}
+const WA_PRO="Hola, equipo de Grupo Nuwek. Me interesa conocer cómo pueden ayudar a mi empresa a profesionalizar su área comercial. ¿Me podrían indicar el mejor momento para platicar? Quedo atento. Gracias.";
+function openContact(sol){const m=typeof sol==='string'?'Hola, equipo de Grupo Nuwek. Me interesa su solución de '+sol+' para mi empresa. ¿Me podrían indicar el mejor momento para platicar? Quedo atento. Gracias.':WA_PRO;$('waContact').href='https://wa.me/527711915922?text='+encodeURIComponent(m);$('contactModal').hidden=false;document.body.style.overflow='hidden';}
+function closeContact(){$('contactModal').hidden=true;document.body.style.overflow=$('examModal')&&!$('examModal').hidden?'hidden':'';}
+const DIAS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],DIASL=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],
+ MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],MESL=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+ HORAS=['9:00','10:00','11:00','12:00','13:00','16:00','17:00'];
+let agOff=0,agSel=null;
+function monday(off){const d=new Date();d.setHours(0,0,0,0);const w=(d.getDay()+6)%7;d.setDate(d.getDate()-w+off*7);return d;}
+function agRender(){const m=monday(agOff),now=new Date();$('agPrev').disabled=agOff<=0;
+ const fri=new Date(m);fri.setDate(m.getDate()+4);
+ $('agRange').textContent=m.getDate()+' '+MES[m.getMonth()]+' – '+fri.getDate()+' '+MES[fri.getMonth()];
+ const g=$('agGrid');g.innerHTML='';
+ for(let i=0;i<5;i++){const d=new Date(m);d.setDate(m.getDate()+i);
+  const col=document.createElement('div');col.className='agday';
+  col.innerHTML='<p style="margin:0 0 4px;text-align:center;font-weight:700">'+DIAS[d.getDay()]+'<br><span style="font-size:22px">'+d.getDate()+'</span></p>';
+  HORAS.forEach((h,j)=>{const b=document.createElement('button');b.type='button';b.className='agslot';b.textContent=h;
+   const dt=new Date(d);dt.setHours(parseInt(h),0,0,0);
+   b.disabled=((d.getDate()*7+j*3)%5===0)||dt<=now;
+   const key=dt.getTime();if(agSel&&agSel.key===key)b.classList.add('on');
+   b.onclick=()=>{agSel={key,txt:DIASL[d.getDay()]+' '+d.getDate()+' de '+MESL[d.getMonth()]+', '+h+' h'};agRender();
+    $('agPick').hidden=false;$('agPickTxt').textContent='Elegiste: '+agSel.txt;};
+   col.appendChild(b);});
+  g.appendChild(col);}}
+function agWeek(n){agOff=Math.max(0,agOff+n);agRender();}
+function agGo(n){if(n>1&&!agSel)return;if(n===3){agConfirm();return;}[1,2,3].forEach(k=>$('agStep'+k).hidden=k!==n);$('agStep2p').hidden=true;if(n===2&&AG_PRE){$('agStep2').hidden=true;$('agStep2p').hidden=false;agPreDraw();}
+ $('agSummary').hidden=n===1||!agSel;if(agSel)$('agSummaryTxt').textContent=agSel.txt;
+ if(n===3){const nm=$('ag_name').value||'Listo';$('agDoneTitle').textContent='¡'+nm+', tu cita quedó agendada!';
+  $('agDoneTxt').textContent='Te esperamos el '+agSel.txt+' (hora del centro). Te mandamos la confirmación por WhatsApp'+($('ag_mail').value?' y la invitación a '+$('ag_mail').value:'')+'.';}
+ window.scrollTo(0,0);}
+function goAgenda(pre){AG_PRE=pre||null;closeContact();if(!$('examModal').hidden)closeX('examModal');agOff=0;agSel=null;$('agPick').hidden=true;agGo(1);agRender();showPage('agenda');window.scrollTo(0,0);}
+
+const RT=[{id:'all',n:'Todos'},{id:'ebook',n:'Ebooks'},{id:'vlog',n:'Vlog'},{id:'exam',n:'Exámenes de ventas'},{id:'sim',n:'Simuladores'},{id:'dmkt',n:'Diccionario de marketing'},{id:'dcon',n:'Diccionario de consultoría'},{id:'int',n:'Internos 🔒'},{id:'cre',n:'Creador 🔒'}];
+const RTN=Object.fromEntries(RT.map(t=>[t.id,t.n]));
+const REC=[
+ {t:'ebook',ti:'El fin del vendedor estrella',d:'2026-11-20',x:'Flipbook interactivo · 24 págs.'},
+ {t:'vlog',ti:'¿Pastoreas o diriges? Episodio 1',d:'2026-11-18',x:'Video · 12 min'},
+ {t:'exam',ti:'¿Pastoreas o diriges a tu equipo?',d:'2026-11-21',x:'Examen interactivo · 6 preguntas · ~5 min'},
+ {t:'dcon',ti:'¿Qué es SBOS?',d:'2026-11-14',x:'Término de consultoría'},
+ {t:'dmkt',ti:'¿Qué es un lead calificado?',d:'2026-11-12',x:'Término de marketing'},
+ {t:'ebook',ti:'Guía SBOS para dueños',d:'2026-11-08',x:'Flipbook interactivo · 32 págs.'},
+ {t:'exam',ti:'Manejo de objeciones',d:'2026-11-04',x:'Examen interactivo · 6 preguntas · ~5 min'},
+ {t:'vlog',ti:'Cómo leer tu pipeline en 5 minutos',d:'2026-11-02',x:'Video · 8 min'},
+ {t:'dcon',ti:'Matriz MIMO',d:'2026-10-28',x:'Término de consultoría'},
+ {t:'dmkt',ti:'Embudo de ventas',d:'2026-10-25',x:'Término de marketing'},
+ {t:'sim',ti:'Simulador: descubrimiento de necesidades',d:'2026-11-22',x:'Cliente virtual · Técnica SPIN',s:0},
+ {t:'sim',ti:'Simulador: objeciones de precio',d:'2026-11-09',x:'Cliente virtual · Sentir, sintieron, descubrieron',s:1},
+ {t:'exam',ti:'Seguimiento de prospectos',d:'2026-10-20',x:'Examen interactivo · 6 preguntas · ~5 min'},
+ {t:'int',ti:'Brief de marca',d:'2026-11-19',x:'Documento interno',lock:1},
+ {t:'int',ti:'Entrevista de trabajo',d:'2026-11-10',x:'Formato interno',lock:1},
+ {t:'int',ti:'Perfil BNI: Carlos',d:'2026-11-06',x:'Perfil interno',lock:1},
+ {t:'int',ti:'Perfil BNI: Estrella',d:'2026-11-06',x:'Perfil interno',lock:1}];
+let recType='all';
+const fmtD=s=>{const [y,m,d]=s.split('-');return +d+' '+MES[+m-1]+' '+y;};
+function recCard(r,big){const lock=r.lock?'<span style="position:absolute;top:10px;right:10px;background:#fff;border:1px solid #999;border-radius:99px;padding:3px 10px;font-size:11px;color:#111">🔒 Con acceso</span>':'';
+ return '<button type="button" class="rcard" onclick="openRec('+REC.indexOf(r)+')"><div class="rimg" style="height:'+(big?150:130)+'px">[IMAGEN]'+lock+'</div><div style="padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;letter-spacing:1px;color:#555">'+RTN[r.t].replace(' 🔒','').toUpperCase()+'</span><strong style="font-size:17px;line-height:1.3">'+r.ti+'</strong><span style="font-size:13px;color:#666">'+r.x+' · '+fmtD(r.d)+'</span></div></button>';}
+function recSet(t,scroll){recType=t;recDraw();if(scroll)$('recFilters').scrollIntoView({behavior:'smooth'});}
+function recDraw(){
+ $('recSide').innerHTML=RT.filter(t=>t.id!=='all').map(t=>'<button type="button" class="rside'+(recType===t.id?' on':'')+'" onclick="recSet(\''+t.id+'\',true)"><span>'+t.n+'</span><span style="color:#666">'+(t.id==='cre'?'':REC.filter(r=>r.t===t.id).length)+' →</span></button>').join('');
+ $('recTabs').innerHTML=RT.map((t,i)=>(i?'<span class="rsep" aria-hidden="true">|</span>':'')+'<button type="button" class="rtab'+(recType===t.id?' on':'')+'" onclick="recSet(\''+t.id+'\')">'+t.n+'</button>').join('');
+ const lat=REC.filter(r=>!r.lock).sort((a,b)=>b.d.localeCompare(a.d)).slice(0,8).map(r=>recCard(r,1)).join('');
+ $('recLatest').innerHTML=lat+lat.replace(/<button /g,'<button tabindex="-1" aria-hidden="true" ');
+ const q=$('recQ').value.trim().toLowerCase();
+ const dd=+$('recDate').value,lim=dd?new Date(Date.now()-dd*864e5).toISOString().slice(0,10):'';
+ let L=REC.filter(r=>(!lim||r.d>=lim)&&(recType==='all'||r.t===recType)&&(!q||(r.ti+' '+r.x+' '+RTN[r.t]).toLowerCase().includes(q)));
+ L.sort($('recSort').value==='az'?(a,b)=>a.ti.localeCompare(b.ti,'es'):(a,b)=>b.d.localeCompare(a.d));
+ $('recGrid').innerHTML=L.map(r=>recCard(r)).join('');$('recEmpty').hidden=L.length>0;
+ const gated=recType==='int'||recType==='cre',lb=$('recLogin');lb.hidden=!gated||intOn;$('recStWrap').hidden=recType!=='cre'||!intOn;
+ $('recCount').textContent=L.length+(L.length===1?' recurso':' recursos')+(recType!=='all'?' en '+RTN[recType].replace(' 🔒',''):'');
+ const sess='<span>🔒 equipo@nuwek.mx · <button type="button" class="lnk" style="padding:0" onclick="intLogout()">Cerrar sesión</button></span>';
+ if(gated&&!intOn){$('recGrid').innerHTML='';$('recCount').textContent='';$('recEmpty').hidden=true;
+   lb.innerHTML='<div class="intlogin">'
+   +'<label class="sr">Usuario</label><input id="lgUser" class="uline" placeholder="Usuario" autocomplete="off" aria-label="Usuario">'
+   +'<input id="lgPass" class="uline" type="password" placeholder="Contraseña" aria-label="Contraseña" onkeydown="if(event.key===\'Enter\')intLogin()">'
+   +'<p id="loginMsg" hidden style="margin:0;font-size:13px"></p><button type="button" class="agbtn" style="width:100%;background:#111;color:#fff;margin-top:8px" onclick="intLogin()">Entrar</button>'
+   +'<a href="#" onclick="return false;" style="font-size:12px;color:#888;text-decoration:none">Pedir acceso</a><p style="margin:0;font-size:11px;color:#bbb">demo: equipo@nuwek.mx · Nuwek2026</p></div>';}
+ else if(recType==='int'){$('recCount').innerHTML='<span style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>'+L.length+' recursos internos</span>'+sess+'</span>';}
+ else if(recType==='cre'){const stf=$('recSt').value;
+  let C=[...DRAFTS.map((d,k)=>({...d,kind:'d',k})),...REC.map((r,k)=>[r,k]).filter(([r])=>!r.lock).map(([r,k])=>({ti:r.ti,tipo:RTN[r.t].replace(' 🔒',''),st:'Publicado',by:'v'+(r.v||1)+' · aprobado',d:r.d,kind:'p',k}))];
+  C=C.filter(c=>(!stf||c.st===stf)&&(!lim||c.d>=lim)&&(!q||(c.ti+' '+c.tipo).toLowerCase().includes(q)));
+  C.sort($('recSort').value==='az'?(a,b)=>a.ti.localeCompare(b.ti,'es'):(a,b)=>b.d.localeCompare(a.d));
+  const cnt=st=>C.filter(c=>c.st===st).length,pl=(n,a,b)=>n+' '+(n===1?a:b);
+  $('recGrid').innerHTML='<button type="button" class="rcard newcard" onclick="goNew()"><span style="font-size:40px;line-height:1">+</span><strong style="font-size:18px">Crear un nuevo recurso</strong><span style="font-size:13px;color:#555">Ebook, vlog, examen, simulador, término, interno o código HTML</span></button>'
+  +C.map(c=>'<button type="button" class="rcard" onclick="goEdit(\''+c.kind+'\','+c.k+')"><div class="rimg" style="height:130px">[IMAGEN]<span class="stbadge st-'+(c.st==='Publicado'?'pub':c.st==='En revisión'?'rev':'bor')+'">'+c.st+'</span></div><div style="padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;letter-spacing:1px;color:#555">'+c.tipo.toUpperCase()+'</span><strong style="font-size:17px;line-height:1.3">'+c.ti+'</strong><span style="font-size:13px;color:#666">'+c.by+' · '+fmtD(c.d)+'</span><span style="font-size:13px;font-weight:700;text-decoration:underline">'+(c.kind==='p'?'Crear siguiente versión →':'Editar →')+'</span></div></button>').join('');
+  $('recEmpty').hidden=true;
+  $('recCount').innerHTML='<span style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span>'+pl(cnt('Publicado'),'publicado','publicados')+' · '+cnt('En revisión')+' en revisión · '+pl(cnt('Borrador'),'borrador','borradores')+'</span>'+sess+'</span>';}}
+function goRec(){showPage('rec');window.scrollTo(0,0);recDraw();}
+function closeX(id){$(id).hidden=true;document.body.style.overflow='';}
+function openRec(i){const r=REC[i];
+ if(r.lock){if(intOn){goInt(i);return;}intPend=i;if(recType!=='int')recSet('int');const lb=$('recLogin');lb.scrollIntoView({behavior:'smooth',block:'center'});$('intWant').textContent='Para abrir «'+r.ti+'»';setTimeout(()=>$('lgUser').focus(),300);return;}
+ if(r.t==='exam'){openExam(r.ti);return;}
+ if(r.t==='sim'){openSim(r.s);return;}
+ if(r.t==='vlog'){const k=VLOG.findIndex(v=>v.ti===r.ti);if(k>=0){goVlog(k);return;}}
+ if(r.t==='dmkt'||r.t==='dcon'){const m={'¿Qué es SBOS?':'sbos','Matriz MIMO':'mimo','¿Qué es un lead calificado?':'lead','Embudo de ventas':'embudo'}[r.ti];if(m){goDic(m);return;}}
+ if(r.t==='ebook'){$('flipTitle').textContent=r.ti;$('flipCover').textContent=r.ti;flipN=0;flipShow();$('flipModal').hidden=false;document.body.style.overflow='hidden';return;}
+ alert('Maqueta: aquí se abre «'+r.ti+'».');}
+let flipN=0;const FLIPL=['Portada','Págs. 1–2','Págs. 3–4','Contraportada'];
+function flip(d){flipN=Math.max(0,Math.min(3,flipN+d));flipShow();}
+function flipShow(){document.querySelectorAll('#book .leaf').forEach((l,i)=>{const t=i<flipN;l.classList.toggle('turned',t);l.style.zIndex=t?10+i:4-i;});$('flipPg').textContent=FLIPL[flipN];}
+
+
+function storyTick(){const hh=($('siteHeader').offsetHeight||80)+12;
+ document.querySelectorAll('.world:not([hidden]) .scrolly').forEach(sc=>{
+  const st=sc.querySelector('.stick');st.style.top=hh+'px';
+  const r=sc.getBoundingClientRect(),run=r.height-st.offsetHeight,fr=Math.max(0,Math.min(0.999,(hh-r.top)/Math.max(1,run))),a=Math.floor(fr*5);
+  if(sc.dataset.a==a)return;sc.dataset.a=a;
+  sc.querySelectorAll('.draw').forEach((d,i)=>d.hidden=i!==a);
+  sc.querySelectorAll('.sc').forEach((e,i)=>{e.classList.toggle('on',i<a);e.classList.toggle('cur',i===a-1);});
+  sc.querySelector('.pnum').textContent=a?'Paso '+a+' de 4':'';
+  sc.querySelector('.htxt').textContent=a===0?'Desliza para ver cómo lo resolvemos':(a<4?'Sigue deslizando':'Listo: así lo resolvemos');});}
+let stRaf=0;addEventListener('scroll',()=>{if(!stRaf)stRaf=requestAnimationFrame(()=>{stRaf=0;storyTick();});},{passive:true});
+
+const EXURL='https://nuwek.mx/recursos';
+const svg=(p)=>'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';
+const ICO={wa:svg('<path d="M4 20l1.4-4A8 8 0 1 1 8 18.6z"/><path d="M9.5 9.5c.3 1.8 2.2 3.7 4 4l1-1 1.5.8c-.2 1-1 1.7-2 1.7-2.8 0-5.5-2.7-5.5-5.5 0-1 .7-1.8 1.7-2l.8 1.5z"/>'),
+ fb:svg('<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>'),
+ li:svg('<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'),
+ x:svg('<path d="M4 4l16 16M20 4L4 20"/>'),
+ link:svg('<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>')};
+function exCopy(b){try{navigator.clipboard.writeText(EXURL);}catch(e){}$('exCopied').textContent='Enlace copiado';}
+const EX={title:'¿Pastoreas o diriges a tu equipo?',
+ avatars:[
+  {id:'dueno',n:'Dueño de PyME',d:'Tienes 6 vendedores y todo termina en tu celular.',sit:'Son las 7 p.m. de un jueves. Tienes 14 mensajes sin leer de tus vendedores: dos piden autorización de descuento, uno no sabe qué responderle a un cliente y otro quiere que tú cierres "porque al cliente le das más confianza". Mañana tienes junta con el banco y no has preparado nada.'},
+  {id:'gerente',n:'Gerente comercial',d:'Diriges un equipo, pero pasas el día apagando fuegos.',sit:'Es lunes. Tu director te pide el pronóstico del mes y no lo tienes claro: el CRM está a medias, dos vendedores no han reportado y el que más vende "trae todo en la cabeza". Tu mañana se va entre llamadas de clientes molestos y cotizaciones atrasadas.'},
+  {id:'vendedor',n:'Vendedor',d:'Vendes, pero cada mes empiezas de cero.',sit:'Cerraste un buen mes, pero este arrancó vacío. Tienes cotizaciones enviadas que nadie contesta, prospectos de la pauta que llegaron hace días y no has atendido, y tu jefe te pregunta a diario "¿cómo vamos?". No sabes por dónde empezar.'}],
+ qs:[
+  {k:'Teoría',q:'¿Qué es un pipeline de ventas?',o:['La lista de clientes que quedaron de llamar','Las oportunidades organizadas por etapa, con su valor y probabilidad de cierre','El reporte de ventas cerradas del mes'],c:1,rec:'Mira el vlog «Cómo leer tu pipeline en 5 minutos».'},
+  {k:'Teoría',q:'¿Para qué sirve un playbook de ventas?',o:['Para motivar al equipo','Para documentar cómo se vende en la empresa y que todos lo repliquen','Para calcular las comisiones'],c:1,rec:'Lee el ebook «El fin del vendedor estrella».'},
+  {k:'Teoría',q:'¿Qué hace "calificado" a un prospecto?',o:['Que ya pidió cotización','Que cumple criterios de necesidad, presupuesto, tiempo y quién decide','Que llegó por recomendación'],c:1,rec:'Consulta en el diccionario: «¿Qué es un lead calificado?».'},
+  {k:'Práctica',chat:'Cliente: "Me interesa, pero está caro."',q:'¿Qué respondes?',o:['"Le puedo hacer un 10% de descuento."','"¿Caro comparado con qué? Cuéntame qué otra opción estás considerando."','"Es el precio; la calidad cuesta."'],c:1,rec:'Practica manejo de objeciones con el examen «Manejo de objeciones».'},
+  {k:'Práctica',chat:'Es lunes y tu pipeline está vacío.',q:'¿Qué haces primero?',o:['Esperar a que la pauta traiga prospectos','Revisar tu prospección de la semana pasada y bloquear tiempo diario para prospectar','Llamar a tus clientes de siempre a ver si se les ofrece algo'],c:1,rec:'Lee la «Guía SBOS para dueños», capítulo de prospección sistemática.'},
+  {k:'Práctica',chat:'Un prospecto no contesta tu cotización desde hace 5 días.',q:'¿Qué haces?',o:['Lo das por perdido','Le escribes: "¿Tuviste oportunidad de verla?"','Le das seguimiento con un dato nuevo de valor y le propones una fecha concreta para hablar'],c:2,rec:'Consulta en el diccionario: «Embudo de ventas», etapa de seguimiento.'}]};
+/* ===== LIBRO: motor común para Exámenes y Simuladores ===== */
+const BK={mode:'exam',step:0,busy:false};
+const bkWide=()=>matchMedia('(min-width:800px)').matches;
+const bkSpread=()=>BK.mode==='sim'&&bkWide();
+const bkLast=()=>BK.mode==='sim'?SIMN-1:EXN-1;
+function bkPage(i,prev){if(i>bkLast())return '<div class="bkend">[CONTRAPORTADA]</div>';return BK.mode==='sim'?simPage(i,prev):exPage(i,prev);}
+function bkMeta(){const st=BK.mode==='sim'?SIMST[BK.step]:exStage(BK.step);$('exStage').textContent=st;$('exBar').style.width=(BK.step/bkLast()*100)+'%';}
+function bkState(step){const sp=step-step%2,rAct=step===sp+1;return {sp,rAct,L:bkPage(sp,false),R:bkPage(sp+1,!rAct)};}
+function bkApply(st){const L=$('bookL'),R=$('bookR');L.inert=st.rAct;R.inert=!st.rAct;R.classList.toggle('dim',!st.rAct);}
+function bkPaint(){const L=$('bookL'),R=$('bookR');$('book2').classList.toggle('single',!bkSpread());
+ if(bkSpread()){const st=bkState(BK.step);L.innerHTML=st.L;R.innerHTML=st.R;bkApply(st);}
+ else{L.innerHTML=bkPage(BK.step,false);L.inert=false;R.innerHTML='';}
+ L.scrollTop=0;R.scrollTop=0;bkMeta();}
+function bkActive(){return bkSpread()&&BK.step%2===1?$('bookR'):$('bookL');}
+function bkRefresh(){const el=bkActive(),y=el.scrollTop;el.innerHTML=bkPage(BK.step,false);el.scrollTop=y;}
+function bkOpen(mode,title){BK.mode=mode;BK.step=0;BK.busy=false;$('exTitle').textContent=title;
+ const w=mode==='sim'?'1100px':'760px';document.querySelectorAll('.bkw').forEach(e=>e.style.maxWidth=w);
+ bkPaint();$('examModal').hidden=false;document.body.style.overflow='hidden';}
+function bkGo(n){if(BK.busy||n===BK.step)return;const fwd=n>BK.step,book=$('book2'),L=$('bookL'),R=$('bookR');
+ const mk=(html,cls)=>{const d=document.createElement('div');d.className='bkpage '+cls;d.innerHTML=html;return d;};
+ if(bkSpread()){
+  const same=Math.floor(n/2)===Math.floor(BK.step/2);BK.step=n;bkMeta();const st=bkState(n);
+  if(same){L.innerHTML=st.L;R.innerHTML=st.R;bkApply(st);bkAfter();return;}
+  BK.busy=true;const oldL=L.innerHTML,oldR=R.innerHTML,oldDim=R.classList.contains('dim');
+  const leaf=document.createElement('div');leaf.className='leaf2 '+(fwd?'fw':'bw');
+  leaf.append(mk(fwd?oldR:oldL,'face'+(fwd&&oldDim?' dim':'')),mk(fwd?st.L:st.R,'face back'+(!fwd&&!st.rAct?' dim':'')));
+  if(fwd){R.innerHTML=st.R;R.classList.toggle('dim',!st.rAct);}else{L.innerHTML=st.L;}
+  book.append(leaf);requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('go')));
+  setTimeout(()=>{L.innerHTML=st.L;R.innerHTML=st.R;bkApply(st);L.scrollTop=0;R.scrollTop=0;leaf.remove();BK.busy=false;bkAfter();},720);
+  return;}
+ const oldL=L.innerHTML,y=L.scrollTop;BK.step=n;bkMeta();const newL=bkPage(n,false);BK.busy=true;
+ L.innerHTML=newL;L.scrollTop=0;
+ const still=mk(oldL,fwd?'oldL':'oldR'),leaf=document.createElement('div');leaf.className='fold'+(fwd?'':' rev');
+ const f=mk(oldL,fwd?'ffront':'ffrontR'),b=mk(newL,fwd?'fback':'fbackR');leaf.append(f,b);book.append(still,leaf);
+ still.scrollTop=y;f.scrollTop=y;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>leaf.classList.add('go')));
+ setTimeout(()=>{still.remove();leaf.remove();BK.busy=false;bkAfter();},700);}
+function bkAfter(){if(BK.mode==='sim'&&BK.step===6){const t=$('simTxt');if(t)t.focus();simScroll();}if(BK.mode==='sim')fitTop();}
+function shareBlock(text,sol){const t=encodeURIComponent(text),u=encodeURIComponent(EXURL);
+ return '<div class="exnoprint" style="display:flex;flex-direction:column;gap:16px;margin-top:12px;padding-top:16px;border-top:1px solid #ddd">'
+ +'<div><p style="margin:0 0 10px;font-weight:700">Comparte tu resultado</p><div class="exshare">'
+ +'<a class="exsoc" aria-label="Compartir en WhatsApp" target="_blank" rel="noopener" href="https://wa.me/?text='+t+'%20'+u+'">'+ICO.wa+'</a>'
+ +'<a class="exsoc" aria-label="Compartir en Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u='+u+'">'+ICO.fb+'</a>'
+ +'<a class="exsoc" aria-label="Compartir en LinkedIn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url='+u+'">'+ICO.li+'</a>'
+ +'<a class="exsoc" aria-label="Compartir en X" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text='+t+'&url='+u+'">'+ICO.x+'</a>'
+ +'<button type="button" class="exsoc" aria-label="Copiar enlace" onclick="exCopy(this)">'+ICO.link+'</button><span id="exCopied" style="font-size:13px;color:#555"></span></div></div>'
+ +'<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button type="button" class="agbtn" onclick="window.print()" aria-label="Descargar resultado en PDF" style="padding:12px 18px">⬇ PDF</button>'
+ +'<button type="button" class="agbtn" style="background:#111;color:#fff" onclick="openContact(\''+sol+'\')">Contáctanos</button>'
+ +'<button type="button" onclick="'+(BK.mode==='sim'?'openSim(sim.idx)':'openExam(ex.title)')+'" style="border:0;background:none;font:inherit;text-decoration:underline;cursor:pointer;padding:10px 0">Repetir</button></div></div>';}
+const fmtWhen=d=>DIASL[d.getDay()]+' '+d.getDate()+' de '+MESL[d.getMonth()]+' de '+d.getFullYear()+', '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')+' h';
+const kick=t=>'<p style="margin:0;font-size:13px;letter-spacing:2px;color:#555">'+t+'</p>';
+const nav=(l,r)=>'<div class="exnav">'+(l||'<span></span>')+(r||'')+'</div>';
+const backLink=(n,t)=>'<button type="button" onclick="bkGo('+n+')" class="lnk">← '+t+'</button>';
+const nextBtn=(js,t,dis)=>'<button type="button" class="agbtn"'+(dis?' disabled':'')+' onclick="'+js+'">'+t+'</button>';
+
+/* ===== EXAMEN ===== */
+let ex={};
+const EXN=2+EX.qs.length+2;
+function exStage(s){if(s===0)return 'Portada';if(s===1)return 'Elige tu avatar';if(s===2)return 'La situación';if(s<3+EX.qs.length){const qi=s-3,q=EX.qs[qi];return q.k+' '+(q.k==='Teoría'?qi+1:qi-2)+' de 3';}return 'Resultado';}
+function openExam(title){ex={av:null,ans:[],start:null,end:null,title};bkOpen('exam',title);}
+function exGo(n){bkGo(n);}
+function exAv(i){ex.av=EX.avatars[i];ex.start=new Date();bkGo(2);}
+function exPick(q,i){ex.ans[q]=i;bkRefresh();}
+function exPage(s,prev){const R=3+EX.qs.length;
+ if(s===0)return kick('EXAMEN DE VENTAS · GRUPO NUWEK')+'<h2 style="margin:0;font-size:30px;line-height:1.15">'+ex.title+'</h2><div class="ph" style="min-height:170px">[PORTADA]</div><p style="margin:0;color:#444;line-height:1.6">Una situación real, 3 preguntas de teoría y 3 de práctica. Al final te damos tu resultado y qué estudiar.</p>'+nav('<span style="font-size:13px;color:#555">~5 minutos</span>',nextBtn('bkGo(1)','Comenzar →'));
+ if(s===1)return kick('PASO 1')+'<h2 style="margin:0;font-size:26px">¿Con quién te identificas?</h2><p style="margin:0;color:#444">La situación se adapta a tu papel en la empresa.</p>'+EX.avatars.map((a,i)=>'<button type="button" class="exav" onclick="exAv('+i+')"><span class="avph">[AVATAR]</span><span style="display:flex;flex-direction:column;gap:4px"><strong style="font-size:18px">'+a.n+'</strong><span style="color:#555;font-size:14px">'+a.d+'</span></span></button>').join('');
+ if(s===2){if(!ex.av)return kick('LA SITUACIÓN')+'<h2 style="margin:0;font-size:26px">Tu situación</h2><div class="ph" style="min-height:220px">La situación se escribe según el avatar que elijas.</div>';
+  return kick('LA SITUACIÓN · '+ex.av.n.toUpperCase())+'<div style="display:flex;gap:16px;align-items:flex-start"><span class="avph" style="width:64px;height:64px;flex-basis:64px">[AVATAR]</span><p style="margin:0;font-size:17px;line-height:1.6">'+ex.av.sit+'</p></div><div class="ph" style="min-height:120px">[ILUSTRACIÓN DE LA SITUACIÓN]</div><p style="margin:0;font-weight:700">¿Qué tanto dominas lo que se necesita para salir de aquí? Vamos a verlo.</p>'+nav(backLink(1,'Cambiar avatar'),nextBtn('bkGo(3)','Empezar preguntas →'));}
+ if(s<R){const qi=s-3,q=EX.qs[qi],num=q.k==='Teoría'?qi+1:qi-2,a=prev?undefined:ex.ans[qi];
+  return kick((q.k==='Teoría'?'PREGUNTAS TEÓRICAS':'PREGUNTAS PRÁCTICAS')+' · '+num+' DE 3')+(q.chat?'<p class="bub">'+q.chat+'</p>':'')+'<h2 style="margin:0;font-size:22px;line-height:1.3">'+q.q+'</h2>'
+  +q.o.map((o,i)=>'<button type="button" class="exopt'+(a===i?' sel':'')+'" onclick="exPick('+qi+','+i+')">'+String.fromCharCode(65+i)+') '+o+'</button>').join('')
+  +nav(backLink(s-1,'Anterior'),nextBtn('bkGo('+(s+1)+')',qi===EX.qs.length-1?'Ver mi resultado →':'Siguiente →',a===undefined));}
+ if(prev||ex.ans.length<EX.qs.length||ex.ans.includes(undefined))return kick('TU RESULTADO')+'<div class="ph" style="min-height:300px">Tu resultado aparecerá aquí al terminar.</div>';
+ if(!ex.end)ex.end=new Date();
+ const ok=EX.qs.filter((q,i)=>ex.ans[i]===q.c).length,mins=Math.max(1,Math.round((ex.end-ex.start)/60000));
+ const lvl=ok>=5?['Director con método','Tu equipo funciona con sistema. Ahora toca medir y afinar.']:ok>=3?['En transición','Tienes bases, pero todavía pastoreas en momentos clave.']:['Pastor de vendedores','Hoy la venta depende de ti. La buena noticia: se arregla con método.'];
+ return '<div class="exprint" style="margin-bottom:8px"><strong>GRUPO NUWEK · Examen de ventas</strong><br>'+ex.title+'</div>'+kick('TU RESULTADO')
+ +'<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><div class="score">'+ok+'/6</div><div style="flex:1 1 200px"><h2 style="margin:0 0 6px;font-size:24px">'+lvl[0]+'</h2><p style="margin:0;color:#444;line-height:1.5">'+lvl[1]+'</p></div></div>'
+ +'<p class="meta">Realizado el '+fmtWhen(ex.end)+' · Avatar: '+ex.av.n+' · Duración: '+mins+' min</p>'
+ +'<p style="margin:8px 0 0;font-weight:700;font-size:18px">Correctas vs. incorrectas</p>'
+ +EX.qs.map((q,i)=>{const g=ex.ans[i]===q.c;return '<div class="exres'+(g?' ok':'')+'"><strong>'+(g?'✓':'✗')+' '+q.k+': '+q.q+'</strong><span style="font-size:14px;color:#444">Tu respuesta: '+q.o[ex.ans[i]]+'</span>'+(g?'':'<span style="font-size:14px">Correcta: <strong>'+q.o[q.c]+'</strong></span><span class="rec">📘 Te recomendamos: '+q.rec+'</span>')+'</div>';}).join('')
+ +shareBlock('Hice el examen «'+ex.title+'» de Grupo Nuwek y saqué '+ok+'/6 ('+lvl[0]+'). Hazlo tú:','Capacitación');}
+
+/* ===== SIMULADOR ===== */
+const SIMS=[
+ {ti:'Descubrimiento de necesidades',tech:'Preguntas SPIN',techD:'Preguntas de Situación, Problema, Implicación y Necesidad: el cliente descubre por sí mismo por qué le conviene resolver su problema.',
+  sit:'Un prospecto llegó por la pauta y pidió información, pero no ha contestado tus mensajes. Por fin te toma la llamada: tienes 10 minutos para entender su necesidad y conseguir un siguiente paso.'},
+ {ti:'Objeciones de precio',tech:'Sentir, sintieron, descubrieron',techD:'Reconoces lo que siente el cliente, cuentas que otros sintieron lo mismo y muestras lo que descubrieron al decidir.',
+  sit:'Llevas dos reuniones con un cliente que ya vio tu propuesta. Le gusta, pero hoy te llamó para decirte que "está caro" y que la competencia le ofrece algo parecido por menos.'}];
+const MERCADOS=['Construcción','Alimentos y bebidas','Automotriz','Servicios profesionales'];
+const LVL=['Bajo','Medio','Alto'],BARS=[['¿Qué tanto sabe el cliente?',['Casi no conoce el producto','Conoce lo básico','Ya comparó con la competencia']],['¿Qué tanto habla?',['Responde con monosílabos','Conversa lo normal','Habla mucho y se desvía']],['¿Qué tanto refuta?',['Acepta casi todo','Cuestiona algunas cosas','Cuestiona cada argumento']]];
+const USERS=[{u:'laura.mtz',n:'Laura M.'},{u:'jorge.ventas',n:'Jorge R.'},{u:'ana.comercial',n:'Ana P.'},{u:'luis.gerente',n:'Luis G.'},{u:'carla.vende',n:'Carla V.'},{u:'alberto.b2b',n:'Alberto S.'}];
+const ETAPAS=['Apertura','Descubrimiento','Presentación','Objeciones','Cierre'];
+const TIPS=['Preséntate en una frase y pide permiso para hacerle unas preguntas.','Haz preguntas abiertas sobre su situación y su problema antes de hablar de tu producto.','Conecta cada beneficio con algo que el cliente ya te dijo.','No discutas: pregunta qué hay detrás de la objeción antes de responder.','Propón un siguiente paso concreto, con día y hora.'];
+const SIMN=8,SIMST=['Introducción','La técnica','Mercado','Nivel del cliente','Tu usuario','Bienvenida','Simulación','Resultado'];
+const STEPS=[[['Situación','Preguntas para entender cómo opera hoy.','"¿Cómo manejan hoy el seguimiento de prospectos?"'],['Problema','Preguntas que sacan a la luz lo que no funciona.','"¿Qué tan seguido se les enfría un prospecto?"'],['Implicación','Preguntas sobre lo que le cuesta no resolverlo.','"¿Cuánto representa al mes esa venta perdida?"'],['Necesidad','Preguntas para que el cliente diga el valor de resolverlo.','"¿Qué cambiaría si cada prospecto tuviera seguimiento?"']],
+ [['Sentir','Reconoce lo que siente el cliente, sin discutir.','"Entiendo que el precio te preocupe."'],['Sintieron','Cuenta que otros clientes sintieron lo mismo.','"Otros clientes sintieron lo mismo al principio."'],['Descubrieron','Muestra lo que descubrieron al decidir.','"Lo que descubrieron es que recuperaron la inversión en 3 meses."'],['Pregunta de avance','Cierra con una pregunta que mueva la venta.','"¿Qué necesitarías ver para tomar la decisión?"']]];
+USERS.push({u:'diego.mx',n:'Diego H.'},{u:'paola.ventas',n:'Paola T.'},{u:'ricardo.ind',n:'Ricardo L.'},{u:'sofia.crm',n:'Sofía E.'});
+const UPTS={'laura.mtz':[412,6],'jorge.ventas':[388,5],'ana.comercial':[351,5],'luis.gerente':[322,4],'carla.vende':[298,4],'alberto.b2b':[276,4],'diego.mx':[240,3],'paola.ventas':[205,3],'ricardo.ind':[178,2],'sofia.crm':[150,2]};
+let sim={};
+function openSim(i){const S=SIMS[i];sim={idx:i,S,mkt:null,lv:[1,1,1],um:'search',sel:null,user:null,stage:0,msgs:[],pts:[],tips:0,done:false,start:null,end:null};bkOpen('sim','Simulador: '+S.ti);}
+const simVal=()=>sim.lv.reduce((a,b)=>a+b,0)+3;
+function simLv(b,v){sim.lv[b]=v;bkRefresh();}
+function simMkt(m){sim.mkt=m;bkRefresh();}
+function simSearch(q){q=q.trim().toLowerCase().replace(/^@/,'');const L=q?USERS.filter(x=>x.u.includes(q)||x.n.toLowerCase().includes(q)):[];
+ $('simList').innerHTML=q?(L.length?L.map(x=>'<button type="button" class="exav" style="padding:10px 14px" onclick="simPickU(\''+x.u+'\')"><span class="avph" style="width:36px;height:36px;flex-basis:36px">@</span><span><strong>@'+x.u+'</strong> <span style="color:#555">· '+x.n+'</span></span></button>').join(''):'<p style="margin:0;color:#666">No encontramos ese usuario.</p>'):'';
+ $('simTop').hidden=!!q;fitTop();}
+function simPickU(u){sim.sel=USERS.find(x=>x.u===u);sim.um='pin';bkRefresh();}
+function simMode(m){sim.um=m;bkRefresh();fitTop();}
+function simLogin(){if(!$('simPin').value){$('simErr').textContent='Escribe tu fecha de nacimiento.';return;}sim.user=sim.sel;bkGo(5);}
+function simReg(){const u=($('rg_u').value||'').trim().replace(/^@/,''),n=($('rg_n').value||'').trim();if(!u||!n||!$('rg_pin').value){$('simErr').textContent='Nombre, @usuario y fecha de nacimiento son obligatorios.';return;}sim.user={u,n,nuevo:true};bkGo(5);}
+function fitTop(){const box=$('simTop');if(!box||box.hidden)return;const lim=box.getBoundingClientRect().bottom;box.querySelectorAll('li').forEach(li=>li.style.display='');box.querySelectorAll('li').forEach(li=>{if(li.getBoundingClientRect().bottom>lim+1)li.style.display='none';});}
+addEventListener('resize',()=>fitTop());
+function simClient(st){const L=sim.lv,M=(sim.mkt||'tu ramo').toLowerCase();let t;
+ if(st===0)t='Bueno, ¿quién habla? Tengo poco tiempo.';
+ else if(st===1)t=L[0]===2?'Ok. Ya hablé con otros dos proveedores. ¿Qué quieres saber de nosotros?':'Ok… ¿y qué es lo que ofrecen?';
+ else if(st===2)t='Pues sí, en '+M+' traemos ese problema desde hace meses. ¿Y tú cómo me ayudarías?';
+ else if(st===3)t=L[2]===2?'Eso dicen todos. Además está caro y ya tenemos proveedor.':L[2]===1?'Suena bien, pero está caro.':'Me gusta. ¿Cuánto cuesta?';
+ else if(st===4)t='Déjame pensarlo y luego te llamo.';
+ else t=sim.pts[4]>=15?'Va, el jueves a las 10 me queda. Mándame la invitación.':'Ok, yo te busco.';
+ if(L[1]===2&&(st===1||st===3))t='Mira, te cuento que esta semana ha sido una locura con los pedidos… en fin. '+t;
+ if(L[1]===0&&st>0&&st<5)t=t.split('.')[0]+'.';
+ return t;}
+function simScore(st,txt){let p=10;if(txt.length>60)p+=5;if(/\?/.test(txt)&&st!==4)p+=5;if(st===4&&/(lunes|martes|miércoles|miercoles|jueves|viernes|mañana|semana|fecha|hora|agenda)/i.test(txt))p+=5;return Math.min(20,p);}
+function simStart(){sim.start=new Date();sim.msgs=[{w:'c',t:simClient(0)}];bkGo(6);}
+function simSend(){const el=$('simTxt'),txt=(el&&el.value||'').trim();if(!txt||sim.done||sim.typing)return;
+ const st=sim.stage;sim.msgs.push({w:'u',t:txt,st});const p=simScore(st,txt);sim.pts[st]=p;sim.msgs.push({w:'e',t:'+'+p+' pts · '+ETAPAS[st]});
+ sim.typing=true;bkRefresh();simScroll();
+ setTimeout(()=>{sim.typing=false;sim.stage=st+1;sim.msgs.push({w:'c',t:simClient(st+1)});if(st===4){sim.done=true;sim.end=new Date();}bkRefresh();simScroll();const t=$('simTxt');if(t)t.focus();},900);}
+function simTip(){if(sim.done)return;sim.tips++;sim.msgs.push({w:'t',t:'💡 Tip de '+ETAPAS[sim.stage]+': '+TIPS[sim.stage]+' (−10 pts)'});bkRefresh();simScroll();}
+function simScroll(){const c=$('simChat');if(c)c.scrollTop=c.scrollHeight;}
+function simTotals(){const r=sim.pts.reduce((a,b)=>a+(b||0),0),v=simVal(),t=sim.tips*10;return {r,v,t,total:Math.max(0,r+v-t)};}
+function simPage(s,prev){const S=sim.S;
+ if(s===0)return kick('SIMULADOR DE VENTAS · GRUPO NUWEK')+'<h2 style="margin:0;font-size:28px;line-height:1.15">'+S.ti+'</h2><p style="margin:0;font-size:16px;line-height:1.55;color:#333">'+S.sit+'</p><div class="ph" style="flex:1 1 auto;min-height:160px">[IMAGEN DE LA SITUACIÓN]</div>'+nav('<span style="font-size:13px;color:#555">~10 minutos</span>',nextBtn('bkGo(1)','Siguiente →'));
+ if(s===1)return kick('LA TÉCNICA QUE VAS A USAR')+'<h2 style="margin:0;font-size:26px">'+S.tech+'</h2><p style="margin:0;color:#444;line-height:1.5">'+S.techD+'</p><p style="margin:4px 0 0;font-weight:700">La fórmula, paso a paso</p><ol class="formula">'+STEPS[sim.idx].map(x=>'<li><strong>'+x[0]+'</strong><span>'+x[1]+'</span><em>'+x[2]+'</em></li>').join('')+'</ol>'+nav(backLink(0,'Anterior'),nextBtn('bkGo(2)','Siguiente →'));
+ if(s===2)return kick('PASO 1 · EL MERCADO')+'<h2 style="margin:0;font-size:26px">¿En qué mercado vendes?</h2><p style="margin:0;color:#444">El cliente virtual hablará como alguien de ese mercado.</p><div class="mktgrid">'+MERCADOS.map(m=>'<button type="button" class="mkt'+(sim.mkt===m&&!prev?' on':'')+'" onclick="simMkt(\''+m+'\')"><span class="ph" style="min-height:70px;font-size:11px">[ÍCONO]</span>'+m+'</button>').join('')+'</div>'+nav(backLink(1,'Anterior'),nextBtn('bkGo(3)','Siguiente →',!sim.mkt||prev));
+ if(s===3)return kick('PASO 2 · EL NIVEL DEL CLIENTE')+'<h2 style="margin:0;font-size:24px">¿Qué tan difícil será tu cliente?</h2>'
+  +BARS.map((b,bi)=>'<div><p style="margin:0 0 6px;font-weight:700">'+b[0]+'</p><div class="lvbar">'+LVL.map((l,li)=>'<button type="button" class="lvseg'+(li<=sim.lv[bi]?' on':'')+'" onclick="simLv('+bi+','+li+')" aria-label="'+b[0]+' '+l+'">'+l+'</button>').join('')+'</div><p style="margin:4px 0 0;font-size:13px;color:#555">'+b[1][sim.lv[bi]]+'</p></div>').join('')
+  +'<p class="meta" style="margin:0">Este cliente vale <strong>'+simVal()+' puntos</strong> (de 3 a 9 según la dificultad)</p>'+nav(backLink(2,'Anterior'),nextBtn('bkGo(4)','Siguiente →'));
+ if(s===4){if(prev)return kick('PASO 3 · TU USUARIO')+'<h2 style="margin:0;font-size:24px">¿Tienes usuario?</h2><div class="ph" style="min-height:200px">Busca tu @usuario o date de alta.</div>';
+  const top=Object.entries(UPTS).sort((a,b)=>b[1][0]-a[1][0]).slice(0,10);
+  if(sim.um==='search')return kick('PASO 3 · TU USUARIO')+'<h2 style="margin:0;font-size:24px">¿Tienes usuario?</h2><label>Busca tu @usuario<input id="simQ" placeholder="Escribe tu @usuario o tu nombre" oninput="simSearch(this.value)" autocomplete="off"></label><div id="simList" style="display:flex;flex-direction:column;gap:6px"></div>'
+   +'<div id="simTop" class="topbox"><p style="margin:0 0 8px;font-weight:700;font-size:14px">🏆 Top 10 de usuarios</p><ol class="toplist">'+top.map((e,i)=>'<li><span class="tn">'+(i+1)+'</span><span style="flex:1">@'+e[0]+'</span><strong>'+e[1][0]+' pts</strong></li>').join('')+'</ol></div>'
+   +nav('<span style="font-size:12px;color:#666">Maqueta: prueba "la" o "ana"</span>','<button type="button" class="agbtn" onclick="simMode(\'reg\')">No tengo usuario</button>');
+  if(sim.um==='pin')return kick('PASO 3 · TU USUARIO')+'<h2 style="margin:0;font-size:24px">Hola, @'+sim.sel.u+'</h2><label>Tu PIN es tu fecha de nacimiento<input id="simPin" type="date"></label><p id="simErr" style="margin:0;font-size:13px"></p><p style="margin:0;font-size:12px;color:#666">Maqueta: cualquier fecha entra.</p>'+nav('<button type="button" class="lnk" onclick="simMode(\'search\')">← No soy yo</button>',nextBtn('simLogin()','Entrar →'));
+  return kick('PASO 3 · DATE DE ALTA')+'<div class="rgrid"><label>Nombre<input id="rg_n" placeholder="Tu nombre"></label><label>Elige tu @usuario<input id="rg_u" placeholder="@tu.usuario"></label><label>Empresa<input placeholder="Tu empresa"></label><label>Puesto<input placeholder="Tu puesto"></label><label>WhatsApp<input type="tel" placeholder="10 dígitos"></label><label>Correo<input type="email" placeholder="tu@correo.com"></label><label>PIN: tu fecha de nacimiento<input id="rg_pin" type="date"></label></div><p id="simErr" style="margin:0;font-size:13px"></p>'+nav('<button type="button" class="lnk" onclick="simMode(\'search\')">← Ya tengo usuario</button>',nextBtn('simReg()','Crear mi usuario →'));}
+ if(s===5){if(prev||!sim.user)return kick('BIENVENIDA')+'<div class="ph" style="min-height:260px">Aquí te damos la bienvenida cuando entres con tu usuario.</div>';
+  const P=UPTS[sim.user.u]||[0,0],rank=P[1]?Object.values(UPTS).filter(v=>v[0]>P[0]).length+1:null;
+  return kick('BIENVENIDA')+'<h2 style="margin:0;font-size:28px">¡Bienvenido, @'+sim.user.u+'!</h2>'
+  +'<div class="ptsbox"><div><span style="font-size:13px;color:#555">Tus puntos acumulados</span><strong style="display:block;font-size:34px">'+P[0]+' pts</strong></div><div style="text-align:right;font-size:13px;color:#555">'+(P[1]?P[1]+' simuladores tomados<br>Lugar #'+rank+' del ranking':'Este es tu primer simulador')+'</div></div>'
+  +'<div class="exres"><span><strong>Técnica:</strong> '+S.tech+'</span><span><strong>Mercado:</strong> '+sim.mkt+'</span><span><strong>Tu cliente:</strong> sabe '+LVL[sim.lv[0]].toLowerCase()+' · habla '+LVL[sim.lv[1]].toLowerCase()+' · refuta '+LVL[sim.lv[2]].toLowerCase()+' (vale '+simVal()+' pts)</span></div><p style="margin:0;font-weight:700">Reglas</p><ul style="margin:0;padding-left:20px;line-height:1.6"><li>Escríbele como le hablarías a tu cliente.</li><li>Pasas por 5 etapas: '+ETAPAS.join(', ')+'.</li><li>Puedes pedir un tip cuando quieras, pero <strong>pierdes 10 puntos</strong> por cada uno.</li></ul>'+nav(backLink(4,'Anterior'),nextBtn('simStart()','Comenzar →'));}
+ if(s===6){if(prev||!sim.start)return kick('SIMULACIÓN')+'<div class="ph" style="min-height:300px">La conversación con tu cliente virtual.</div>';
+  const T=simTotals();
+  return '<div class="stagebar">'+ETAPAS.map((e,i)=>'<span class="'+(i<sim.stage?'done':i===sim.stage&&!sim.done?'cur':'')+'">'+e+'</span>').join('')+'</div>'
+  +'<div style="display:flex;justify-content:space-between;font-size:13px;color:#555"><span>@'+sim.user.u+' · '+S.tech+'</span><strong style="color:#111">'+(T.r-T.t)+' pts</strong></div>'
+  +'<div id="simChat" class="simchat">'+sim.msgs.map(m=>m.w==='c'?'<p class="bub"><b>Cliente:</b> '+m.t+'</p>':m.w==='u'?'<p class="bub me">'+m.t.replace(/</g,'&lt;')+'</p>':m.w==='t'?'<p class="tipm">'+m.t+'</p>':'<p class="evm">'+m.t+'</p>').join('')+(sim.typing?'<p class="bub" style="color:#888">Cliente está escribiendo…</p>':'')+'</div>'
+  +(sim.done?nav('<span></span>',nextBtn('bkGo(7)','Ver mi resultado →')):'<div class="simin"><textarea id="simTxt" rows="2" placeholder="Escribe tu respuesta…" onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();simSend()}"></textarea><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><button type="button" class="tipbtn" onclick="simTip()">💡 Pide un tip y pierde −10 puntos</button><button type="button" class="agbtn" style="padding:10px 22px;min-height:44px" onclick="simSend()">Enviar</button></div></div>');}
+ if(prev||!sim.done)return kick('TU RESULTADO')+'<div class="ph" style="min-height:300px">Tu resultado aparecerá aquí al terminar la simulación.</div>';
+ const T=simTotals(),mins=Math.max(1,Math.round((sim.end-sim.start)/60000)),lvl=T.total>=80?['Vendedor con método','Dominas la técnica. Ahora súbele la dificultad al cliente.']:T.total>=55?['En camino','Vas bien, pero hay etapas donde todavía improvisas.']:['Sigue practicando','La técnica todavía no es hábito. Repite con un cliente más fácil.'];
+ const ans=sim.msgs.filter(m=>m.w==='u'),P=UPTS[sim.user.u]||[0,0];
+ return '<div class="exprint" style="margin-bottom:8px"><strong>GRUPO NUWEK · Simulador de ventas</strong><br>'+S.ti+' · '+S.tech+'</div>'+kick('TU RESULTADO')
+ +'<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap"><div class="score">'+T.total+'</div><div style="flex:1 1 200px"><h2 style="margin:0 0 6px;font-size:24px">'+lvl[0]+'</h2><p style="margin:0;color:#444;line-height:1.5">'+lvl[1]+'</p></div></div>'
+ +'<p class="meta">Realizado el '+fmtWhen(sim.end)+' · @'+sim.user.u+' · Mercado: '+sim.mkt+' · Cliente: sabe '+LVL[sim.lv[0]].toLowerCase()+', habla '+LVL[sim.lv[1]].toLowerCase()+', refuta '+LVL[sim.lv[2]].toLowerCase()+' · Duración: '+mins+' min</p>'
+ +'<div class="exres"><span>Respuestas: <strong>+'+T.r+'</strong> de 100</span><span>Dificultad del cliente: <strong>+'+T.v+'</strong></span><span>Tips usados: <strong>'+sim.tips+' (−'+T.t+')</strong></span><span>Tu nuevo acumulado: <strong>'+(P[0]+T.total)+' pts</strong></span></div>'
+ +'<p style="margin:8px 0 0;font-weight:700;font-size:18px">Bien vs. a mejorar, por etapa</p>'
+ +ETAPAS.map((e,i)=>{const g=(sim.pts[i]||0)>=15;return '<div class="exres'+(g?' ok':'')+'"><strong>'+(g?'✓':'✗')+' '+e+' · +'+(sim.pts[i]||0)+' pts</strong><span style="font-size:14px;color:#444">Tu respuesta: '+((ans[i]&&ans[i].t)||'').replace(/</g,'&lt;')+'</span>'+(g?'':'<span class="rec">📘 Para mejorar: '+TIPS[i]+'</span>')+'</div>';}).join('')
+ +'<p style="margin:0;font-size:12px;color:#666">Maqueta: la evaluación es simulada. Las reglas de puntos se definen después.</p>'
+ +shareBlock('Hice el simulador «'+S.ti+'» de Grupo Nuwek y saqué '+T.total+' puntos ('+lvl[0]+'). Pruébalo:','Capacitación');}
+
+
+
+
+function floatTick(){const f=$('floatCta'),home=!$('pageHome').hidden,anyModal=['modal','contactModal','examModal','flipModal','loginModal'].some(id=>$(id)&&!$(id).hidden);
+ const show=home&&!anyModal&&scrollY>60;const r=$('homeCtaBtn').getBoundingClientRect(),docked=r.top<innerHeight-40;
+ f.classList.toggle('show',show&&!docked);f.classList.toggle('dock',show&&docked);
+ const on=show&&!docked;f.tabIndex=on?0:-1;f.setAttribute('aria-hidden',on?'false':'true');}
+addEventListener('scroll',floatTick,{passive:true});addEventListener('resize',floatTick);setInterval(floatTick,500);
+
+/* ===== VLOG ===== */
+const VLOG=[
+ {ti:'¿Pastoreas o diriges? Episodio 1',d:'2026-11-18',dur:'12 min',desc:'Por qué tantos dueños terminan pastoreando a su equipo de ventas, y cuál es la primera señal de que necesitas un método.',
+  caps:[['0:00','La semana típica de un dueño pastor'],['2:40','Las 3 señales de que estás pastoreando'],['6:15','Por qué "más ganas" no lo arregla'],['9:30','El primer paso para dirigir con método']],
+  ideas:['Si todo pasa por ti, no tienes un equipo: tienes ayudantes.','Más juntas y más presión es pastorear más fuerte, no dirigir.','El primer paso es escribir cómo se vende hoy en tu empresa.'],
+  res:[['exam','¿Pastoreas o diriges a tu equipo?','Examen · 5 min'],['ebook','El fin del vendedor estrella','Ebook']]},
+ {ti:'Cómo leer tu pipeline en 5 minutos',d:'2026-11-02',dur:'8 min',desc:'Un método rápido para revisar tu pipeline cada lunes y saber dónde se está atorando la venta, sin preguntarle a nadie.',
+  caps:[['0:00','Qué es (y qué no es) un pipeline'],['1:50','Las 3 preguntas de cada lunes'],['4:20','Cómo detectar oportunidades muertas'],['6:40','Qué hacer con lo que encontraste']],
+  ideas:['Un pipeline sin probabilidad de cierre es solo una lista.','Si una oportunidad no se movió en 2 semanas, probablemente está muerta.','La revisión del lunes dura 5 minutos si el pipeline está al día.'],
+  res:[['dic','embudo','Diccionario · Embudo de ventas'],['sim',0,'Simulador · Descubrimiento']]}];
+let vlogI=0;
+function goVlog(i){vlogI=i;vlogDraw();showPage('vlog');scrollTo(0,0);}
+function vlogCap(k){$('vPlayer').querySelector('.vnow').textContent='▶ Reproduciendo desde '+VLOG[vlogI].caps[k][0]+' · '+VLOG[vlogI].caps[k][1];document.querySelectorAll('.vcap').forEach((c,j)=>c.classList.toggle('on',j===k));}
+function vlogRes(r){if(r[0]==='exam')openExam(r[1]);else if(r[0]==='sim')openSim(r[1]);else if(r[0]==='dic')goDic(r[1]);else{const i=REC.findIndex(x=>x.ti===r[1]);if(i>=0)openRec(i);}}
+function vlogDraw(){const v=VLOG[vlogI];
+ $('vlogBody').innerHTML='<a href="#" onclick="goRec();return false;" class="lnk" style="display:inline-block;margin-bottom:12px">← Recursos</a>'
+ +'<div class="vgrid"><div style="min-width:0">'
+ +'<div id="vPlayer" class="vplayer"><span style="font-size:44px" aria-hidden="true">▶</span><span>[VIDEO DEL EPISODIO]</span><span class="vnow" style="font-size:13px"></span></div>'
+ +'<p style="margin:16px 0 6px;font-size:13px;letter-spacing:2px;color:#555">VLOG · '+fmtD(v.d).toUpperCase()+' · '+v.dur.toUpperCase()+'</p>'
+ +'<h1 style="margin:0 0 10px;font-size:34px;line-height:1.15">'+v.ti+'</h1><p style="margin:0 0 16px;font-size:17px;line-height:1.6;color:#444">'+v.desc+'</p>'
+ +'<div class="exshare" style="margin-bottom:24px"><a class="exsoc" aria-label="Compartir en WhatsApp" href="#" onclick="return false;">'+ICO.wa+'</a><a class="exsoc" aria-label="Compartir en Facebook" href="#" onclick="return false;">'+ICO.fb+'</a><a class="exsoc" aria-label="Compartir en LinkedIn" href="#" onclick="return false;">'+ICO.li+'</a><a class="exsoc" aria-label="Compartir en X" href="#" onclick="return false;">'+ICO.x+'</a><button type="button" class="exsoc" aria-label="Copiar enlace">'+ICO.link+'</button></div>'
+ +'<div class="vbox"><p class="vh">Ideas clave</p><ol style="margin:0;padding-left:20px;line-height:1.6">'+v.ideas.map(x=>'<li>'+x+'</li>').join('')+'</ol></div>'
+ +'<details class="vbox" style="margin-top:16px"><summary style="font-weight:700;cursor:pointer;padding:4px 0">Ver transcripción</summary><p style="margin:12px 0 0;color:#555">[TRANSCRIPCIÓN COMPLETA DEL EPISODIO]</p></details>'
+ +'</div><aside class="stickyside">'
+ +'<div class="vbox"><p class="vh">Capítulos</p>'+v.caps.map((c,k)=>'<button type="button" class="vcap" onclick="vlogCap('+k+')"><span class="vt">'+c[0]+'</span>'+c[1]+'</button>').join('')+'</div>'
+ +'<div class="vbox"><p class="vh">Llévalo a la práctica</p>'+v.res.map(r=>'<button type="button" class="vres" onclick=\'vlogRes('+JSON.stringify(r)+')\'><span class="ph" style="width:56px;height:44px;flex:0 0 56px;padding:0;font-size:10px">[IMG]</span><span><strong style="display:block">'+(r[0]==='dic'?DIC.find(t=>t.id===r[1]).t:r[0]==='sim'?SIMS[r[1]].ti:r[1])+'</strong><span style="font-size:13px;color:#555">'+r[2]+'</span></span></button>').join('')+'</div>'
+ +'<div class="vbox"><p class="vh">Más episodios</p>'+VLOG.map((e,k)=>k===vlogI?'':'<button type="button" class="vres" onclick="goVlog('+k+')"><span class="ph" style="width:96px;height:56px;flex:0 0 96px;padding:0;font-size:10px">▶</span><span><strong style="display:block">'+e.ti+'</strong><span style="font-size:13px;color:#555">'+e.dur+' · '+fmtD(e.d)+'</span></span></button>').join('')+'</div>'
+ +'</aside></div>'
+ +'<div class="ctaband" style="margin-top:40px"><p style="margin:0;flex:2 1 420px;font-size:21px;line-height:1.5">Si te viste en este episodio, no estás solo. <strong>Lo resolvemos con método.</strong></p><div style="flex:1 1 220px"><button type="button" class="agbtn" onclick="openContact()">Hablemos</button></div></div>';}
+
+/* ===== DICCIONARIO ===== */
+const DIC=[
+ {id:'sbos',t:'SBOS',cat:'dcon',tipo:'Metodología',d:'2026-11-14',one:'La metodología de Grupo Nuwek para que una empresa venda con sistema y no dependa de una sola persona.',
+  easy:'Es como el sistema operativo de una computadora, pero para tus ventas: define cómo se prospecta, cómo se vende, cómo se da seguimiento y cómo se mide. Si el sistema funciona, no importa quién esté sentado en la silla.',
+  ex:['Dueño','Cada venta grande la tengo que cerrar yo.','Consultor','Entonces tu empresa no tiene un sistema de ventas: el sistema eres tú. Eso es lo que SBOS cambia.'],
+  how:'Se diagnostica calificando 11 subsistemas comerciales en una escala de N0 a N4, y con eso se decide qué disciplina atacar primero.',
+  err:['Pensar que es un curso: es una forma de operar la empresa.','Instalar solo una parte y esperar el resultado completo.'],rel:['mimo','embudo','playbook'],test:['exam','¿Pastoreas o diriges a tu equipo?']},
+ {id:'mimo',t:'Matriz MIMO',cat:'dcon',tipo:'Herramienta',d:'2026-10-28',one:'Herramienta para decidir qué hacer con cada práctica comercial de tu empresa: Mantener, Incorporar, Mejorar u Omitir.',
+  easy:'Es como ordenar un clóset: lo que sirve se queda, lo que falta se compra, lo que está roto se arregla y lo que estorba se va.',
+  ex:['Gerente','Hacemos junta diaria, no tenemos CRM, el seguimiento es por WhatsApp y mandamos promociones por correo que nadie abre.','Consultor','Mantener la junta, incorporar CRM, mejorar el seguimiento y omitir los correos masivos.'],
+  how:'Se llena después del diagnóstico: cada práctica cae en uno de los cuatro cuadrantes y eso se vuelve tu plan de trabajo.',
+  err:['Querer incorporar todo al mismo tiempo.','No omitir nada por miedo a soltar lo de siempre.'],rel:['sbos','kpi'],test:['sim',0]},
+ {id:'lead',t:'Lead calificado',cat:'dmkt',tipo:'Concepto',d:'2026-11-12',one:'Un prospecto que ya cumple los criterios para comprarte: tiene la necesidad, el presupuesto, el tiempo y puede decidir.',
+  easy:'No todo el que pregunta el precio quiere comprar. Un lead calificado es el que sí podría firmar si le haces bien la venta.',
+  ex:['Prospecto','Hola, ¿cuánto cuesta?','Vendedor','Te paso el precio. Para darte el correcto: ¿para cuándo lo necesitas y quién más participa en la decisión?'],
+  how:'% de leads calificados = leads calificados ÷ leads totales × 100',
+  err:['Contar como lead a cualquiera que dio like.','Pasarle a ventas leads sin calificar y luego culpar al equipo.'],rel:['embudo','cpl'],test:['exam','¿Pastoreas o diriges a tu equipo?']},
+ {id:'embudo',t:'Embudo de ventas',cat:'dmkt',tipo:'Concepto',d:'2026-10-25',one:'Las etapas por las que pasa alguien desde que te conoce hasta que te compra.',
+  easy:'Es un embudo porque en cada etapa entra menos gente: muchos te ven, algunos preguntan, pocos compran. Tu trabajo es que se caigan los menos posibles.',
+  ex:['Director','Nos llegan 200 prospectos al mes y cerramos 6.','Consultor','Veamos en qué etapa se caen: si 150 nunca recibieron respuesta, el problema no es la pauta.'],
+  how:'Conversión por etapa = personas que pasan a la siguiente etapa ÷ personas en la etapa × 100',
+  err:['Ver solo el número final de ventas.','Querer arreglar todo con más pauta.'],rel:['lead','cpl','sbos'],test:['sim',0]}];
+const DIC_SOON={dmkt:['CPL (costo por lead)','CRM','Funnel de contenido','ROI','Ticket promedio'],dcon:['Forecast','KPI','Pipeline','Playbook','Rituales comerciales']};
+const SOON_ID={cpl:'CPL (costo por lead)',kpi:'KPI',playbook:'Playbook'};
+let dicCat='dmkt',dicId='lead';
+function goDic(id){const t=DIC.find(x=>x.id===id);if(t){dicId=id;dicCat=t.cat;}dicDraw();showPage('dic');scrollTo(0,0);}
+function dicSetCat(c){dicCat=c;const f=DIC.find(x=>x.cat===c);if(f)dicId=f.id;dicDraw();}
+function dicPick(id){dicId=id;dicDraw();const e=$('dicEntry');if(e&&innerWidth<800)e.scrollIntoView({behavior:'smooth'});}
+let dicLet='',dicQ='';
+function dicFilter(q){dicQ=q.trim().toLowerCase();dicApply();}
+function dicLetter(l){dicLet=dicLet===l?'':l;document.querySelectorAll('.az button').forEach(b=>b.classList.toggle('on',b.textContent===dicLet));dicApply();}
+function dicApply(){let n=0;document.querySelectorAll('.dterm').forEach(b=>{const t=b.dataset.t.toLowerCase();const ok=(!dicQ||t.includes(dicQ))&&(!dicLet||t[0]===dicLet.toLowerCase());b.hidden=!ok;if(ok)n++;});const e=$('dicNone');if(e)e.hidden=n>0;}
+function dicDraw(){const t=DIC.find(x=>x.id===dicId),catN=dicCat==='dmkt'?'marketing':'consultoría';dicLet='';dicQ='';
+ const items=[...DIC.filter(x=>x.cat===dicCat).map(x=>({t:x.t,id:x.id})),...DIC_SOON[dicCat].map(n=>({t:n,soon:1}))].sort((a,b)=>a.t.localeCompare(b.t,'es'));
+ const letters=[...new Set(items.map(i=>i.t[0].toUpperCase()))];
+ const relName=id=>{const r=DIC.find(x=>x.id===id);return r?r.t:(SOON_ID[id]||id);};
+ const testName=t.test[0]==='exam'?t.test[1]:SIMS[t.test[1]].ti,testSub=t.test[0]==='exam'?'Examen · 5 min':'Simulador · 10 min',testJs=t.test[0]==='exam'?'openExam(\''+t.test[1]+'\')':'openSim('+t.test[1]+')';
+ $('dicBody').innerHTML='<a href="#" onclick="goRec();return false;" class="lnk" style="display:inline-block;margin-bottom:12px">← Recursos</a>'
+ +'<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:16px"><div><p style="margin:0 0 6px;font-size:13px;letter-spacing:3px;color:#555">DICCIONARIO</p><h1 style="margin:0;font-size:36px">Diccionario de '+catN+'</h1></div>'
+ +'<div class="dictabs"><button type="button" class="'+(dicCat==='dmkt'?'on':'')+'" onclick="dicSetCat(\'dmkt\')">Marketing</button><button type="button" class="'+(dicCat==='dcon'?'on':'')+'" onclick="dicSetCat(\'dcon\')">Consultoría</button></div></div>'
+ +'<div class="vgrid" style="margin-top:8px"><article id="dicEntry" class="dentry">'
+ +'<p style="margin:0;font-size:13px;color:#555">'+t.tipo.toLowerCase()+' · '+catN+' · actualizado el '+fmtD(t.d)+'</p>'
+ +'<h2 style="margin:-16px 0 0;font-size:48px;line-height:1.05">'+t.t+'</h2>'
+ +'<p class="done1">'+t.one+'</p>'
+ +'<section><p class="vh">Explicado fácil</p><p style="margin:0;line-height:1.65;font-size:17px">'+t.easy+'</p></section>'
+ +'<section><p class="vh">Ejemplo real</p><div style="display:flex;flex-direction:column;gap:8px"><p class="bub"><b>'+t.ex[0]+':</b> '+t.ex[1]+'</p><p class="bub me"><b>'+t.ex[2]+':</b> '+t.ex[3]+'</p></div></section>'
+ +'<section><p class="vh">'+(t.how.includes('=')?'Cómo se mide':'Cómo se usa')+'</p><p class="dformula">'+t.how+'</p></section>'
+ +'<section><p class="vh">Errores comunes</p><ul style="margin:0;padding-left:20px;line-height:1.6">'+t.err.map(e=>'<li>'+e+'</li>').join('')+'</ul></section>'
+ +'</article><aside class="stickyside">'
+ +'<div class="vbox dfind"><label style="font-weight:400"><span style="position:absolute;left:-9999px">Buscar término</span><input placeholder="Buscar término…" oninput="dicFilter(this.value)"></label>'
+ +'<div class="az" role="group" aria-label="Filtrar por letra">'+'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('').map(l=>'<button type="button"'+(letters.includes(l)?'':' disabled')+' onclick="dicLetter(\''+l+'\')">'+l+'</button>').join('')+'</div>'
+ +'<div class="dlist">'+items.map(i=>i.soon?'<span class="dterm soon" data-t="'+i.t+'">'+i.t+' <em>pronto</em></span>':'<button type="button" class="dterm'+(i.id===dicId?' on':'')+'" data-t="'+i.t+'" onclick="dicPick(\''+i.id+'\')">'+i.t+'</button>').join('')+'<span id="dicNone" hidden style="color:#666;padding:8px">Sin términos con ese filtro.</span></div>'+'</div>'
+
+ +'<div class="vbox"><p class="vh">Ponlo a prueba</p><button type="button" class="vres" onclick="'+testJs+'"><span class="ph" style="width:56px;height:44px;flex:0 0 56px;padding:0;font-size:10px">[IMG]</span><span><strong style="display:block">'+testName+'</strong><span style="font-size:13px;color:#555">'+testSub+'</span></span></button></div>'
+ +'<div class="vbox"><p class="vh">Términos relacionados</p>'+t.rel.map(r=>{const d=DIC.find(x=>x.id===r);return d?'<button type="button" class="vres" onclick="goDic(\''+r+'\')"><span class="ph" style="width:56px;height:44px;flex:0 0 56px;padding:0;font-size:16px">Aa</span><span><strong style="display:block">'+d.t+'</strong><span style="font-size:13px;color:#555">'+d.tipo+' · '+(d.cat==='dmkt'?'Marketing':'Consultoría')+'</span></span></button>':'<div class="vres" style="cursor:default;color:#999"><span class="ph" style="width:56px;height:44px;flex:0 0 56px;padding:0;font-size:16px">Aa</span><span><strong style="display:block">'+relName(r)+'</strong><span style="font-size:13px">Pronto</span></span></div>';}).join('')+'</div>'
+ +'<div class="vbox"><p class="vh">Compartir</p><div class="exshare"><a class="exsoc" aria-label="Compartir en WhatsApp" href="#" onclick="return false;">'+ICO.wa+'</a><a class="exsoc" aria-label="Compartir en Facebook" href="#" onclick="return false;">'+ICO.fb+'</a><a class="exsoc" aria-label="Compartir en LinkedIn" href="#" onclick="return false;">'+ICO.li+'</a><a class="exsoc" aria-label="Compartir en X" href="#" onclick="return false;">'+ICO.x+'</a><button type="button" class="exsoc" aria-label="Copiar enlace">'+ICO.link+'</button></div></div>'
+ +'</aside></div>';}
+
+
+/* ===== RECURSOS INTERNOS (demo) ===== */
+let intOn=false,intPend=null;
+const INTD={'Brief de marca':'Guía de identidad de Grupo Nuwek: colores, tipografía, isologo, iconografía y fotografía.','Entrevista de trabajo':'Formato de entrevista y criterios de evaluación para candidatos.','Perfil BNI: Carlos':'Perfil de presentación para reuniones BNI.','Perfil BNI: Estrella':'Perfil de presentación para reuniones BNI.'};
+function intLogin(){const u=$('lgUser').value.trim().toLowerCase(),p=$('lgPass').value;
+ if(u==='equipo@nuwek.mx'&&p==='Nuwek2026'){intOn=true;if(intPend!==null){const k=intPend;intPend=null;goInt(k);}else recDraw();}
+ else{$('loginMsg').hidden=false;$('loginMsg').textContent='Usuario o contraseña incorrectos.';}}
+function intLogout(){intOn=false;intPend=null;if(!$('pageRec').hidden)recDraw();else goRec();}
+function goInt(i){const r=REC[i],others=REC.map((x,k)=>[x,k]).filter(([x,k])=>x.lock&&k!==i);
+ $('intBody').innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px"><a href="#" onclick="goRec();return false;" class="lnk">← Recursos</a><span style="font-size:13px;color:#555">🔒 Sesión: equipo@nuwek.mx · <button type="button" class="lnk" style="padding:0" onclick="intLogout()">Cerrar sesión</button></span></div>'
+ +'<div class="vgrid"><div style="min-width:0"><p style="margin:0 0 6px;font-size:13px;letter-spacing:2px;color:#555">RECURSO INTERNO · '+r.x.toUpperCase()+' · '+fmtD(r.d).toUpperCase()+'</p><h1 style="margin:0 0 10px;font-size:34px">'+r.ti+'</h1><p style="margin:0 0 20px;color:#444;font-size:17px">'+(INTD[r.ti]||'')+'</p>'
+ +'<div class="ph" style="min-height:520px;font-size:14px">[VISOR DEL DOCUMENTO]</div></div>'
+ +'<aside style="display:flex;flex-direction:column;gap:16px;min-width:0"><div class="vbox"><p class="vh">Acciones</p><button type="button" class="vres" onclick="return false;"><span class="ph" style="width:44px;height:44px;flex:0 0 44px;padding:0">⬇</span><span><strong style="display:block">Descargar</strong><span style="font-size:13px;color:#555">PDF</span></span></button></div>'
+ +'<div class="vbox"><p class="vh">Otros recursos internos</p>'+others.map(([x,k])=>'<button type="button" class="vres" onclick="goInt('+k+')"><span class="ph" style="width:44px;height:44px;flex:0 0 44px;padding:0">🔒</span><span><strong style="display:block">'+x.ti+'</strong><span style="font-size:13px;color:#555">'+x.x+'</span></span></button>').join('')+'</div></aside></div>';
+ showPage('int');scrollTo(0,0);}
+
+
+/* ===== CREAR RECURSO (demo) ===== */
+const DRAFTS=[{ti:'Guía de prospección en frío',tipo:'Ebook',st:'En revisión',by:'v1 · Equipo marketing',d:'2026-11-22'},{ti:'¿Pastoreas o diriges? Episodio 2',tipo:'Vlog',st:'Borrador',by:'v1 · Equipo marketing',d:'2026-11-20'}];
+const NEWT=[['📖','Ebook','Revista flipbook con bloques: texto, desplegables, chat y video'],['🎬','Vlog','Video con capítulos, ideas clave y recursos para practicar'],['📝','Examen de ventas','Situación por avatar, preguntas de teoría y práctica'],['🤖','Simulador','Técnica, fórmula, niveles del cliente y rúbrica por etapa'],['Aa','Término de diccionario','Frase, explicado fácil, ejemplo, fórmula y errores'],['🔒','Recurso interno','Documento o archivo solo para el equipo'],['&lt;/&gt;','Pegar código HTML','Crea un recurso a partir de tu propio código']];
+let newT=null;
+function goNew(){newT=null;newDraw();showPage('new');scrollTo(0,0);}
+function newPick(i){newT=i;newDraw();scrollTo(0,0);}
+function newPrev(){const c=$('nwCode').value;$('nwFrame').srcdoc=c||'<p style="font-family:Arial;color:#888;padding:20px">Aquí aparece la vista previa.</p>';}
+function newSend(){const t=$('nwTitle').value.trim();if(!t){$('nwMsg').textContent='Ponle un título.';return;}DRAFTS.unshift({ti:t,tipo:NEWT[newT][1],st:'En revisión',by:'v1 · equipo@nuwek.mx',d:new Date().toISOString().slice(0,10)});recSet('cre');goRec();}
+function newDraw(){let h='<a href="#" onclick="recSet(\'cre\');goRec();return false;" class="lnk" style="display:inline-block;margin-bottom:12px">← Creador</a>';
+ if(newT===null){h+='<p style="margin:0 0 6px;font-size:13px;letter-spacing:3px;color:#555">CREAR</p><h1 style="margin:0 0 6px;font-size:36px">¿Qué quieres crear?</h1><p style="margin:0 0 24px;color:#555">Todo lo que crees pasa a revisión de Dirección antes de publicarse.</p><div class="ntgrid">'
+  +NEWT.map((t,i)=>'<button type="button" class="ntile'+(i===6?' code':'')+'" onclick="newPick('+i+')"><span class="ntic">'+t[0]+'</span><strong style="font-size:18px">'+t[1]+'</strong><span style="font-size:13px;color:#555">'+t[2]+'</span></button>').join('')+'</div>';}
+ else if(newT<6){h+='<p style="margin:0 0 6px;font-size:13px;letter-spacing:3px;color:#555">CREAR · '+NEWT[newT][1].toUpperCase()+'</p><h1 style="margin:0 0 16px;font-size:32px">Nuevo: '+NEWT[newT][1]+'</h1><div class="ph" style="min-height:320px">[EDITOR DE '+NEWT[newT][1].toUpperCase()+' CON VISTA PREVIA — se maqueta en la siguiente fase]</div><p style="margin:16px 0 0"><button type="button" class="lnk" onclick="newPick(null)">← Elegir otro tipo</button></p>';}
+ else{h+='<p style="margin:0 0 6px;font-size:13px;letter-spacing:3px;color:#555">CREAR · CÓDIGO HTML</p><h1 style="margin:0 0 16px;font-size:32px">Crea un recurso con tu código</h1>'
+  +'<div class="vgrid"><div style="display:flex;flex-direction:column;gap:14px;min-width:0">'
+  +'<div class="rgrid"><label>Título<input id="nwTitle" placeholder="Ej. Calculadora de comisiones"></label><label>¿Quién lo puede ver?<select><option>Público (en Recursos)</option><option>Solo el equipo (Interno)</option></select></label></div>'
+  +'<label>Pega tu código HTML<textarea id="nwCode" rows="12" oninput="newPrev()" placeholder="&lt;!doctype html&gt;…" style="font-family:ui-monospace,Menlo,monospace;font-size:13px;border:1px solid #999;border-radius:10px;padding:12px;resize:vertical"></textarea></label>'
+  +'<p style="margin:0;font-weight:700">Vista previa</p><iframe id="nwFrame" sandbox="allow-scripts" title="Vista previa" style="width:100%;height:320px;border:1px solid #bbb;border-radius:12px;background:#fff"></iframe>'
+  +'<p id="nwMsg" style="margin:0;font-size:13px"></p><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><button type="button" class="agbtn" style="background:#111;color:#fff" onclick="newSend()">Enviar a revisión</button><button type="button" class="lnk" onclick="newPick(null)">← Elegir otro tipo</button></div></div>'
+  +'<aside style="min-width:0"><div class="vbox"><p class="vh">Dónde colocar tus archivos</p><ol style="margin:0;padding-left:20px;line-height:1.6;font-size:14px">'
+  +'<li><strong>Un solo archivo:</strong> si tu HTML trae todo adentro (estilos y scripts), pégalo y listo.</li>'
+  +'<li><strong>Imágenes, videos y PDF:</strong> súbelos primero a la biblioteca de medios de Nuwek y copia su enlace.</li>'
+  +'<li><strong>En tu código</strong> usa ese enlace completo, por ejemplo <code>https://nuwek.mx/medios/mi-imagen.jpg</code>.</li>'
+  +'<li><strong>No uses rutas de tu compu</strong> como <code>C:\\Usuarios\\…</code> o <code>./img/foto.jpg</code>: en línea no existen.</li>'
+  +'<li><strong>Fuentes:</strong> usa Google Fonts con su enlace, no archivos locales.</li>'
+  +'<li><strong>Revisa la vista previa:</strong> si ahí se ve bien, así se verá publicado.</li></ol>'
+  +'<p style="margin:10px 0 0;font-size:12px;color:#666">Por seguridad, el código corre aislado: no puede leer datos del sitio ni de los usuarios.</p></div></aside></div>';
+  setTimeout(newPrev,0);}
+ $('newBody').innerHTML=h;}
+
+
+/* ===== EDITAR / VERSIONES (demo) ===== */
+function goEdit(kind,k){const isP=kind==='p',r=isP?REC[k]:DRAFTS[k],tipo=isP?RTN[r.t].replace(' 🔒',''):r.tipo,v=isP?(r.v||1):(r.ver||1);
+ let h='<a href="#" onclick="recSet(\'cre\');goRec();return false;" class="lnk" style="display:inline-block;margin-bottom:12px">← Creador</a>'
+ +'<p style="margin:0 0 6px;font-size:13px;letter-spacing:3px;color:#555">CREADOR · '+tipo.toUpperCase()+'</p><h1 style="margin:0 0 6px;font-size:34px">'+r.ti+'</h1>'
+ +'<p style="margin:0 0 24px;color:#555">'+(isP?'Versión '+v+' en línea desde el '+fmtD(r.d):'Versión '+v+' · '+r.st)+'</p><div class="vgrid"><div style="min-width:0">';
+ if(isP)h+='<div class="ph" style="min-height:300px">[VISTA PREVIA DE LA VERSIÓN '+v+' PUBLICADA]</div><div class="dtest" style="margin-top:20px"><div><p style="margin:0 0 4px;font-weight:700;font-size:18px">¿Quieres hacer cambios?</p><p style="margin:0;color:#444">Se crea la versión '+(v+1)+' como borrador. La versión '+v+' sigue en línea hasta que Dirección apruebe la nueva.</p></div><button type="button" class="agbtn" style="background:#111;color:#fff" onclick="newVersion('+k+')">Crear versión '+(v+1)+' →</button></div>';
+ else h+='<div class="ph" style="min-height:300px">[EDITOR DE '+tipo.toUpperCase()+' CON VISTA PREVIA]</div><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">'+(r.st==='Borrador'?'<button type="button" class="agbtn" style="background:#111;color:#fff" onclick="DRAFTS['+k+'].st=\'En revisión\';goEdit(\'d\','+k+')">Enviar a revisión</button>':'<span class="meta" style="margin:0">En revisión: esperando visto bueno de Dirección.</span>')+'</div>';
+ h+='</div><aside style="min-width:0"><div class="vbox"><p class="vh">Historial de versiones</p>';
+ const hist=isP?Array.from({length:v},(_,i)=>['v'+(v-i),i===0?'Publicada · en línea':'Archivada',fmtD(r.d)]):[['v'+v,r.st,fmtD(r.d)]].concat(v>1?[['v'+(v-1),'Publicada · en línea','']]:[]);
+ h+=hist.map(x=>'<div class="vres" style="cursor:default"><span class="ph" style="width:44px;height:44px;flex:0 0 44px;padding:0;font-weight:700;font-size:13px">'+x[0]+'</span><span><strong style="display:block">'+x[1]+'</strong><span style="font-size:13px;color:#555">'+(x[2]||'')+'</span></span></div>').join('')+'</div></aside></div>';
+ $('newBody').innerHTML=h;showPage('new');scrollTo(0,0);}
+function newVersion(k){const r=REC[k];DRAFTS.unshift({ti:r.ti,tipo:RTN[r.t].replace(' 🔒',''),st:'Borrador',by:'v'+((r.v||1)+1)+' · equipo@nuwek.mx',d:new Date().toISOString().slice(0,10),ver:(r.v||1)+1});goEdit('d',0);}
+
+function segPick(b){b.parentNode.querySelectorAll('.segb').forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-checked',x===b);});}
+
+/* ===== AGENDA CON DATOS + THANK YOU ===== */
+let AG_PRE=null;
+function agFromVsl(){const seg=document.querySelector('#formBox .segb.on');
+ const pre={n:$('f_name').value.trim(),w:$('f_phone').value.trim(),e:$('f_company').value.trim(),web:$('f_web').value.trim(),t:seg?seg.textContent:''};
+ closeModal();goAgenda(pre);}
+function agPreDraw(){const p=AG_PRE,row=(k,v)=>'<span style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding-bottom:8px"><span style="color:#555">'+k+'</span><strong style="text-align:right">'+(v||'—')+'</strong></span>';
+ $('agPreBox').innerHTML=row('Nombre',p.n)+row('WhatsApp',p.w)+row('Empresa',p.e)+row('Página web',p.web)+row('Personas que venden',p.t)+row('Cita',agSel.txt+' (hora del centro)');}
+function agConfirm(){const nm=AG_PRE?AG_PRE.n:($('ag_name').value||'').trim();goThanks(nm,agSel.txt);}
+function goThanks(nm,when){$('tyTitle').textContent=nm?'Gracias, '+nm.split(' ')[0]+'.':'¡Gracias!';$('tyWhen').textContent='Nos vemos el '+when+'.';showPage('thanks');scrollTo(0,0);}
+
+const TOTAL=180, UNLOCK=120, WA='527711915922';
+let sec=0,t=null;
+const $=id=>document.getElementById(id);
+function openModal(){$('modal').hidden=false;document.body.style.overflow='hidden';}
+function closeModal(){stop();$('modal').hidden=true;document.body.style.overflow='';}
+function submitForm(e){if(e)e.preventDefault();$('stepForm').hidden=true;$('stepVideo').hidden=false;
+ $('greeting').textContent=($('f_name').value||'Listo')+', esto es SBOS en 3 minutos.';update();}
+function stop(){clearInterval(t);t=null;$('playBtn').textContent=sec>0?'Continuar':'▶ Reproducir';}
+function togglePlay(){if(t){stop();return;}$('playBtn').textContent='Pausa';
+ t=setInterval(()=>{sec=Math.min(sec+3,TOTAL);update();if(sec>=TOTAL)stop();},100);}
+function update(){const n=$('f_name').value||'[nombre]',e=$('f_company').value||'[empresa]';
+ const p=Math.round(sec/TOTAL*100);$('bar').style.width=p+'%';$('pct').textContent=p;
+ $('time').textContent=Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')+' / 3:00';
+ $('unlocked').hidden=sec<UNLOCK;
+ let m=sec>=UNLOCK?'Hola, soy '+n+' de '+e+'. Ya vi el video de SBOS y me hizo sentido. Quiero agendar mi diagnóstico.'
+  :sec>=60?'Hola, soy '+n+' de '+e+'. Vi parte del video de SBOS y quiero entender cómo aplicaría en mi empresa.'
+  :'Hola, soy '+n+' de '+e+'. Me interesa saber cómo Nuwek puede ayudar a mi equipo de ventas.';
+ if(curSol&&!$('pageSol').hidden)m+=' Me interesa: '+SOLN[curSol]+'.';
+ const ts=Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
+ m+=sec>=TOTAL?' (Vi el video completo, 3:00 de 3:00.)':' (Vi el video hasta el '+ts+' de 3:00.)';
+ $('waMsg').textContent=m;$('waLink').href='https://wa.me/'+WA+'?text='+encodeURIComponent(m);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!$('modal').hidden)closeModal();if(!$('contactModal').hidden)closeContact();['flipModal','examModal'].forEach(m=>{if(!$(m).hidden)closeX(m);});if(!$('flipModal').hidden){}}});
+</script>
+</body>
+</html>
